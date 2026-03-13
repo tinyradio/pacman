@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="360" viewBox="0 0 240 360">
+  <defs>
+    <linearGradient id="border19" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D4A843;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="240" height="360" rx="12" fill="#f5f0e8"/>
+  <rect x="6" y="6" width="228" height="348" rx="10" fill="none" stroke="url(#border19)" stroke-width="3"/>
+  <rect x="14" y="14" width="212" height="332" rx="8" fill="none" stroke="#D4A843" stroke-width="1" stroke-dasharray="4,4"/>
+  <circle cx="24" cy="24" r="4" fill="#D4A843" opacity="0.6"/>
+  <circle cx="216" cy="24" r="4" fill="#D4A843" opacity="0.6"/>
+  <circle cx="24" cy="336" r="4" fill="#D4A843" opacity="0.6"/>
+  <circle cx="216" cy="336" r="4" fill="#D4A843" opacity="0.6"/>
+  <text x="120" y="50" text-anchor="middle" font-family="Georgia, serif" font-size="22" font-weight="bold" fill="#8B5CF6">XIX</text>
+  <line x1="60" y1="58" x2="180" y2="58" stroke="#D4A843" stroke-width="1"/>
+  <!-- Center: Large sun with face, sunflowers, child on horse, wall -->
+  <g transform="translate(120,155)">
+    <!-- Large sun -->
+    <circle cx="0" cy="-45" r="22" fill="#FCD34D" opacity="0.2"/>
+    <circle cx="0" cy="-45" r="20" fill="none" stroke="#D4A843" stroke-width="2"/>
+    <!-- Sun face -->
+    <circle cx="-6" cy="-48" r="2" fill="#D4A843"/>
+    <circle cx="6" cy="-48" r="2" fill="#D4A843"/>
+    <path d="M-5,-40 Q0,-36 5,-40" fill="none" stroke="#D4A843" stroke-width="1.5"/>
+    <!-- Sun rays -->
+    <line x1="0" y1="-70" x2="0" y2="-78" stroke="#D4A843" stroke-width="2"/>
+    <line x1="15" y1="-63" x2="20" y2="-70" stroke="#D4A843" stroke-width="2"/>
+    <line x1="-15" y1="-63" x2="-20" y2="-70" stroke="#D4A843" stroke-width="2"/>
+    <line x1="22" y1="-50" x2="30" y2="-52" stroke="#D4A843" stroke-width="2"/>
+    <line x1="-22" y1="-50" x2="-30" y2="-52" stroke="#D4A843" stroke-width="2"/>
+    <line x1="20" y1="-35" x2="28" y2="-30" stroke="#D4A843" stroke-width="2"/>
+    <line x1="-20" y1="-35" x2="-28" y2="-30" stroke="#D4A843" stroke-width="2"/>
+    <line x1="15" y1="-27" x2="22" y2="-20" stroke="#D4A843" stroke-width="2"/>
+    <line x1="-15" y1="-27" x2="-22" y2="-20" stroke="#D4A843" stroke-width="2"/>
+    <!-- Wavy rays -->
+    <path d="M10,-67 Q13,-72 16,-67" fill="none" stroke="#FCD34D" stroke-width="1.5" opacity="0.5"/>
+    <path d="M-10,-67 Q-13,-72 -16,-67" fill="none" stroke="#FCD34D" stroke-width="1.5" opacity="0.5"/>
+    <!-- Child figure on horse -->
+    <circle cx="0" cy="-5" r="7" fill="none" stroke="#8B5CF6" stroke-width="2"/>
+    <line x1="0" y1="2" x2="0" y2="15" stroke="#8B5CF6" stroke-width="2"/>
+    <!-- Arms raised joyfully -->
+    <line x1="0" y1="5" x2="-12" y2="-5" stroke="#8B5CF6" stroke-width="2"/>
+    <line x1="0" y1="5" x2="12" y2="-5" stroke="#8B5CF6" stroke-width="2"/>
+    <!-- Horse -->
+    <ellipse cx="0" cy="25" rx="20" ry="10" fill="none" stroke="#D4A843" stroke-width="2"/>
+    <path d="M18,20 Q25,12 22,5" fill="none" stroke="#D4A843" stroke-width="2"/>
+    <line x1="-15" y1="33" x2="-18" y2="48" stroke="#D4A843" stroke-width="1.5"/>
+    <line x1="-5" y1="34" x2="-3" y2="48" stroke="#D4A843" stroke-width="1.5"/>
+    <line x1="5" y1="34" x2="3" y2="48" stroke="#D4A843" stroke-width="1.5"/>
+    <line x1="15" y1="33" x2="18" y2="48" stroke="#D4A843" stroke-width="1.5"/>
+    <!-- Banner/flag -->
+    <rect x="-12" y="-8" width="5" height="12" rx="1" fill="#DC2626" opacity="0.2"/>
+    <!-- Sunflowers along wall -->
+    <rect x="-55" y="40" width="110" height="10" rx="2" fill="#9CA3AF" opacity="0.1" stroke="#9CA3AF" stroke-width="1"/>
+    <!-- Sunflower 1 -->
+    <circle cx="-35" cy="35" r="5" fill="#FCD34D" opacity="0.3" stroke="#D4A843" stroke-width="1"/>
+    <circle cx="-35" cy="35" r="2" fill="#8B6914" opacity="0.4"/>
+    <line x1="-35" y1="40" x2="-35" y2="50" stroke="#4ADE80" stroke-width="1.5"/>
+    <!-- Sunflower 2 -->
+    <circle cx="35" cy="33" r="5" fill="#FCD34D" opacity="0.3" stroke="#D4A843" stroke-width="1"/>
+    <circle cx="35" cy="33" r="2" fill="#8B6914" opacity="0.4"/>
+    <line x1="35" y1="38" x2="35" y2="50" stroke="#4ADE80" stroke-width="1.5"/>
+    <!-- Sunflower 3 -->
+    <circle cx="-45" cy="37" r="4" fill="#FCD34D" opacity="0.25" stroke="#D4A843" stroke-width="1"/>
+    <line x1="-45" y1="41" x2="-45" y2="50" stroke="#4ADE80" stroke-width="1"/>
+    <!-- Sunflower 4 -->
+    <circle cx="45" cy="36" r="4" fill="#FCD34D" opacity="0.25" stroke="#D4A843" stroke-width="1"/>
+    <line x1="45" y1="40" x2="45" y2="50" stroke="#4ADE80" stroke-width="1"/>
+  </g>
+  <line x1="60" y1="290" x2="180" y2="290" stroke="#D4A843" stroke-width="1"/>
+  <text x="120" y="312" text-anchor="middle" font-family="Georgia, serif" font-size="16" font-weight="bold" fill="#4A3728">The Sun</text>
+  <text x="120" y="334" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#8B5CF6">태양</text>
+</svg>

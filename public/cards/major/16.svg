@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="360" viewBox="0 0 240 360">
+  <defs>
+    <linearGradient id="border16" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D4A843;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="240" height="360" rx="12" fill="#f5f0e8"/>
+  <rect x="6" y="6" width="228" height="348" rx="10" fill="none" stroke="url(#border16)" stroke-width="3"/>
+  <rect x="14" y="14" width="212" height="332" rx="8" fill="none" stroke="#D4A843" stroke-width="1" stroke-dasharray="4,4"/>
+  <circle cx="24" cy="24" r="4" fill="#D4A843" opacity="0.6"/>
+  <circle cx="216" cy="24" r="4" fill="#D4A843" opacity="0.6"/>
+  <circle cx="24" cy="336" r="4" fill="#D4A843" opacity="0.6"/>
+  <circle cx="216" cy="336" r="4" fill="#D4A843" opacity="0.6"/>
+  <text x="120" y="50" text-anchor="middle" font-family="Georgia, serif" font-size="22" font-weight="bold" fill="#8B5CF6">XVI</text>
+  <line x1="60" y1="58" x2="180" y2="58" stroke="#D4A843" stroke-width="1"/>
+  <!-- Center: Tower struck by lightning, crown blasted off, falling figures -->
+  <g transform="translate(120,165)">
+    <!-- Dark sky -->
+    <rect x="-55" y="-65" width="110" height="50" rx="3" fill="#1a1a2e" opacity="0.05"/>
+    <!-- Tower -->
+    <rect x="-15" y="-30" width="30" height="80" rx="2" fill="#9CA3AF" opacity="0.25" stroke="#9CA3AF" stroke-width="2"/>
+    <!-- Tower windows -->
+    <rect x="-6" y="-15" width="5" height="8" rx="1" fill="#4A3728" opacity="0.3"/>
+    <rect x="1" y="-15" width="5" height="8" rx="1" fill="#4A3728" opacity="0.3"/>
+    <rect x="-6" y="5" width="5" height="8" rx="1" fill="#4A3728" opacity="0.3"/>
+    <rect x="1" y="5" width="5" height="8" rx="1" fill="#4A3728" opacity="0.3"/>
+    <rect x="-6" y="25" width="5" height="8" rx="1" fill="#4A3728" opacity="0.3"/>
+    <rect x="1" y="25" width="5" height="8" rx="1" fill="#4A3728" opacity="0.3"/>
+    <!-- Tower top (battlements) -->
+    <rect x="-18" y="-35" width="36" height="8" rx="1" fill="#9CA3AF" opacity="0.3" stroke="#9CA3AF" stroke-width="1"/>
+    <!-- Crown being blasted off -->
+    <path d="M-8,-50 L-5,-58 L0,-50 L5,-58 L8,-50" fill="none" stroke="#D4A843" stroke-width="2"/>
+    <line x1="-8" y1="-50" x2="8" y2="-50" stroke="#D4A843" stroke-width="2"/>
+    <!-- Crown tilted/flying off -->
+    <g transform="translate(15,-55) rotate(25)">
+      <path d="M-6,0 L-4,-6 L0,0 L4,-6 L6,0" fill="none" stroke="#D4A843" stroke-width="1.5"/>
+      <line x1="-6" y1="0" x2="6" y2="0" stroke="#D4A843" stroke-width="1.5"/>
+    </g>
+    <!-- Lightning bolt -->
+    <path d="M30,-65 L5,-35 L15,-35 L-5,-10 L5,-10 L-10,15" fill="none" stroke="#FCD34D" stroke-width="3"/>
+    <path d="M30,-65 L5,-35 L15,-35 L-5,-10 L5,-10 L-10,15" fill="none" stroke="#FCD34D" stroke-width="1.5" opacity="0.5"/>
+    <!-- Fire/explosion at top -->
+    <circle cx="0" cy="-30" r="8" fill="#DC2626" opacity="0.15"/>
+    <circle cx="5" cy="-35" r="5" fill="#FCD34D" opacity="0.2"/>
+    <!-- Falling figure 1 -->
+    <g transform="translate(-30,-10) rotate(-45)">
+      <circle cx="0" cy="0" r="5" fill="none" stroke="#8B5CF6" stroke-width="1.5"/>
+      <line x1="0" y1="5" x2="0" y2="15" stroke="#8B5CF6" stroke-width="1.5"/>
+      <line x1="0" y1="8" x2="-6" y2="4" stroke="#8B5CF6" stroke-width="1.5"/>
+      <line x1="0" y1="8" x2="6" y2="4" stroke="#8B5CF6" stroke-width="1.5"/>
+      <line x1="0" y1="15" x2="-4" y2="22" stroke="#8B5CF6" stroke-width="1.5"/>
+      <line x1="0" y1="15" x2="4" y2="22" stroke="#8B5CF6" stroke-width="1.5"/>
+    </g>
+    <!-- Falling figure 2 -->
+    <g transform="translate(30,10) rotate(30)">
+      <circle cx="0" cy="0" r="5" fill="none" stroke="#E879A8" stroke-width="1.5"/>
+      <line x1="0" y1="5" x2="0" y2="15" stroke="#E879A8" stroke-width="1.5"/>
+      <line x1="0" y1="8" x2="-6" y2="4" stroke="#E879A8" stroke-width="1.5"/>
+      <line x1="0" y1="8" x2="6" y2="4" stroke="#E879A8" stroke-width="1.5"/>
+      <line x1="0" y1="15" x2="-4" y2="22" stroke="#E879A8" stroke-width="1.5"/>
+      <line x1="0" y1="15" x2="4" y2="22" stroke="#E879A8" stroke-width="1.5"/>
+    </g>
+    <!-- Debris -->
+    <rect x="-35" y="20" width="4" height="4" fill="#9CA3AF" opacity="0.3" transform="rotate(30,-33,22)"/>
+    <rect x="25" y="30" width="3" height="3" fill="#9CA3AF" opacity="0.3" transform="rotate(45,26,31)"/>
+    <rect x="-20" y="35" width="3" height="3" fill="#9CA3AF" opacity="0.3" transform="rotate(15,-18,36)"/>
+    <!-- Rocky base -->
+    <polygon points="-25,50 -15,40 0,48 15,42 25,50" fill="#9CA3AF" opacity="0.15"/>
+  </g>
+  <line x1="60" y1="290" x2="180" y2="290" stroke="#D4A843" stroke-width="1"/>
+  <text x="120" y="312" text-anchor="middle" font-family="Georgia, serif" font-size="16" font-weight="bold" fill="#4A3728">The Tower</text>
+  <text x="120" y="334" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#8B5CF6">탑</text>
+</svg>

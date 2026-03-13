@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="360" viewBox="0 0 240 360">
+  <defs>
+    <linearGradient id="border10" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D4A843;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="240" height="360" rx="12" fill="#f5f0e8"/>
+  <rect x="6" y="6" width="228" height="348" rx="10" fill="none" stroke="url(#border10)" stroke-width="3"/>
+  <rect x="14" y="14" width="212" height="332" rx="8" fill="none" stroke="#D4A843" stroke-width="1" stroke-dasharray="4,4"/>
+  <circle cx="24" cy="24" r="4" fill="#D4A843" opacity="0.6"/>
+  <circle cx="216" cy="24" r="4" fill="#D4A843" opacity="0.6"/>
+  <circle cx="24" cy="336" r="4" fill="#D4A843" opacity="0.6"/>
+  <circle cx="216" cy="336" r="4" fill="#D4A843" opacity="0.6"/>
+  <text x="120" y="50" text-anchor="middle" font-family="Georgia, serif" font-size="22" font-weight="bold" fill="#8B5CF6">X</text>
+  <line x1="60" y1="58" x2="180" y2="58" stroke="#D4A843" stroke-width="1"/>
+  <!-- Center: Large wheel with symbols, sphinx on top, creatures on sides -->
+  <g transform="translate(120,170)">
+    <!-- Outer wheel -->
+    <circle cx="0" cy="0" r="45" fill="none" stroke="#D4A843" stroke-width="2.5"/>
+    <!-- Inner wheel -->
+    <circle cx="0" cy="0" r="30" fill="none" stroke="#8B5CF6" stroke-width="1.5"/>
+    <!-- Innermost circle -->
+    <circle cx="0" cy="0" r="15" fill="#D4A843" opacity="0.08"/>
+    <!-- Spokes -->
+    <line x1="0" y1="-45" x2="0" y2="45" stroke="#D4A843" stroke-width="1" opacity="0.4"/>
+    <line x1="-45" y1="0" x2="45" y2="0" stroke="#D4A843" stroke-width="1" opacity="0.4"/>
+    <line x1="-32" y1="-32" x2="32" y2="32" stroke="#D4A843" stroke-width="1" opacity="0.4"/>
+    <line x1="32" y1="-32" x2="-32" y2="32" stroke="#D4A843" stroke-width="1" opacity="0.4"/>
+    <!-- TARO letters on wheel -->
+    <text x="0" y="-32" text-anchor="middle" font-family="Georgia, serif" font-size="10" font-weight="bold" fill="#8B5CF6">T</text>
+    <text x="32" y="4" text-anchor="middle" font-family="Georgia, serif" font-size="10" font-weight="bold" fill="#8B5CF6">A</text>
+    <text x="0" y="38" text-anchor="middle" font-family="Georgia, serif" font-size="10" font-weight="bold" fill="#8B5CF6">R</text>
+    <text x="-32" y="4" text-anchor="middle" font-family="Georgia, serif" font-size="10" font-weight="bold" fill="#8B5CF6">O</text>
+    <!-- Alchemical symbols in inner ring -->
+    <text x="0" y="-17" text-anchor="middle" font-family="Georgia, serif" font-size="8" fill="#D4A843">&#x2648;</text>
+    <text x="17" y="3" text-anchor="middle" font-family="Georgia, serif" font-size="8" fill="#D4A843">&#x2649;</text>
+    <text x="0" y="20" text-anchor="middle" font-family="Georgia, serif" font-size="8" fill="#D4A843">&#x264A;</text>
+    <text x="-17" y="3" text-anchor="middle" font-family="Georgia, serif" font-size="8" fill="#D4A843">&#x264B;</text>
+    <!-- Sphinx on top -->
+    <ellipse cx="0" cy="-52" rx="12" ry="6" fill="#D4A843" opacity="0.2" stroke="#D4A843" stroke-width="1.5"/>
+    <!-- Snake descending left -->
+    <path d="M-38,-25 Q-45,-15 -40,-5 Q-35,5 -42,15" fill="none" stroke="#DC2626" stroke-width="2" opacity="0.5"/>
+    <!-- Anubis ascending right -->
+    <path d="M38,25 Q45,15 40,5 Q35,-5 42,-15" fill="none" stroke="#8B5CF6" stroke-width="2" opacity="0.5"/>
+    <!-- Corner creatures (four fixed signs) -->
+    <text x="-55" y="-50" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#D4A843" opacity="0.5">&#x2649;</text>
+    <text x="55" y="-50" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#D4A843" opacity="0.5">&#x264F;</text>
+    <text x="-55" y="55" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#D4A843" opacity="0.5">&#x2652;</text>
+    <text x="55" y="55" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#D4A843" opacity="0.5">&#x264C;</text>
+  </g>
+  <line x1="60" y1="290" x2="180" y2="290" stroke="#D4A843" stroke-width="1"/>
+  <text x="120" y="308" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="bold" fill="#4A3728">Wheel of Fortune</text>
+  <text x="120" y="334" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#8B5CF6">운명의 수레바퀴</text>
+</svg>

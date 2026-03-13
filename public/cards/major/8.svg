@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="360" viewBox="0 0 240 360">
+  <defs>
+    <linearGradient id="border8" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D4A843;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="240" height="360" rx="12" fill="#f5f0e8"/>
+  <rect x="6" y="6" width="228" height="348" rx="10" fill="none" stroke="url(#border8)" stroke-width="3"/>
+  <rect x="14" y="14" width="212" height="332" rx="8" fill="none" stroke="#D4A843" stroke-width="1" stroke-dasharray="4,4"/>
+  <circle cx="24" cy="24" r="4" fill="#D4A843" opacity="0.6"/>
+  <circle cx="216" cy="24" r="4" fill="#D4A843" opacity="0.6"/>
+  <circle cx="24" cy="336" r="4" fill="#D4A843" opacity="0.6"/>
+  <circle cx="216" cy="336" r="4" fill="#D4A843" opacity="0.6"/>
+  <text x="120" y="50" text-anchor="middle" font-family="Georgia, serif" font-size="22" font-weight="bold" fill="#8B5CF6">VIII</text>
+  <line x1="60" y1="58" x2="180" y2="58" stroke="#D4A843" stroke-width="1"/>
+  <!-- Center: Woman gently closing lion's mouth, infinity symbol -->
+  <g transform="translate(120,165)">
+    <!-- Infinity above -->
+    <ellipse cx="-8" cy="-60" rx="10" ry="6" fill="none" stroke="#D4A843" stroke-width="2" transform="rotate(-15,-8,-60)"/>
+    <ellipse cx="8" cy="-60" rx="10" ry="6" fill="none" stroke="#D4A843" stroke-width="2" transform="rotate(15,8,-60)"/>
+    <!-- Flowers garland -->
+    <circle cx="-30" cy="-40" r="3" fill="#E879A8" opacity="0.3"/>
+    <circle cx="-35" cy="-30" r="3" fill="#E879A8" opacity="0.3"/>
+    <circle cx="30" cy="-40" r="3" fill="#E879A8" opacity="0.3"/>
+    <circle cx="35" cy="-30" r="3" fill="#E879A8" opacity="0.3"/>
+    <!-- Woman figure -->
+    <circle cx="5" cy="-40" r="9" fill="none" stroke="#8B5CF6" stroke-width="2"/>
+    <line x1="5" y1="-31" x2="5" y2="0" stroke="#8B5CF6" stroke-width="2"/>
+    <path d="M5,0 Q0,10 -5,25" fill="none" stroke="#8B5CF6" stroke-width="2"/>
+    <path d="M5,0 Q10,10 15,25" fill="none" stroke="#8B5CF6" stroke-width="2"/>
+    <!-- Arms reaching to lion -->
+    <line x1="5" y1="-20" x2="-15" y2="-10" stroke="#8B5CF6" stroke-width="2"/>
+    <line x1="5" y1="-20" x2="-10" y2="-5" stroke="#8B5CF6" stroke-width="2"/>
+    <!-- Lion -->
+    <ellipse cx="-15" cy="10" rx="20" ry="14" fill="#D4A843" opacity="0.15" stroke="#D4A843" stroke-width="2"/>
+    <!-- Lion's mane -->
+    <circle cx="-20" cy="0" r="12" fill="#D4A843" opacity="0.1"/>
+    <!-- Lion's head -->
+    <circle cx="-20" cy="-2" r="8" fill="none" stroke="#D4A843" stroke-width="1.5"/>
+    <!-- Lion's mouth being closed -->
+    <line x1="-24" y1="2" x2="-16" y2="2" stroke="#D4A843" stroke-width="1.5"/>
+    <!-- Lion legs -->
+    <line x1="-30" y1="20" x2="-32" y2="35" stroke="#D4A843" stroke-width="1.5"/>
+    <line x1="-5" y1="20" x2="-3" y2="35" stroke="#D4A843" stroke-width="1.5"/>
+    <!-- Lion tail -->
+    <path d="M5,15 Q15,10 12,5" fill="none" stroke="#D4A843" stroke-width="1.5"/>
+    <!-- Mountain background -->
+    <polygon points="-50,40 -35,20 -20,40" fill="#9CA3AF" opacity="0.1"/>
+    <polygon points="30,40 42,22 55,40" fill="#9CA3AF" opacity="0.1"/>
+  </g>
+  <line x1="60" y1="290" x2="180" y2="290" stroke="#D4A843" stroke-width="1"/>
+  <text x="120" y="312" text-anchor="middle" font-family="Georgia, serif" font-size="16" font-weight="bold" fill="#4A3728">Strength</text>
+  <text x="120" y="334" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#8B5CF6">힘</text>
+</svg>

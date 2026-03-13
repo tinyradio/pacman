@@ -1,0 +1,111 @@
+"use client";
+
+import { FlexBox, Typography } from "@wanteddev/wds";
+import {
+  IconSparkle,
+  IconStar,
+  IconCircleCheckFill,
+} from "@wanteddev/wds-icon";
+import type { Spread } from "@/lib/tarot/types";
+import { SPREAD_CONFIGS } from "@/lib/tarot/types";
+
+const SPREAD_ICONS: Record<Spread, React.ReactNode> = {
+  one: <IconSparkle sx={{ fontSize: "20px" }} />,
+  three: <IconStar sx={{ fontSize: "20px" }} />,
+};
+
+interface SpreadSelectorProps {
+  selected: Spread | null;
+  onSelect: (spread: Spread) => void;
+}
+
+export function SpreadSelector({ selected, onSelect }: SpreadSelectorProps) {
+  const spreads = Object.values(SPREAD_CONFIGS);
+
+  return (
+    <FlexBox gap="12px">
+      {spreads.map((spread) => {
+        const isSelected = selected === spread.type;
+        return (
+          <FlexBox
+            key={spread.type}
+            as="button"
+            flexDirection="column"
+            alignItems="center"
+            gap="12px"
+            flex="1"
+            onClick={() => onSelect(spread.type)}
+            aria-pressed={isSelected}
+            sx={(theme) => ({
+              position: "relative",
+              padding: "24px 16px 20px",
+              borderRadius: "16px",
+              outline: isSelected
+                ? `2px solid ${theme.semantic.primary.normal}`
+                : `1px solid ${theme.semantic.line.normal}`,
+              backgroundColor: theme.semantic.background.normal.normal,
+              cursor: "pointer",
+              textAlign: "center",
+              transition: "all 0.2s ease",
+              "&:hover": {
+                outlineColor: theme.semantic.primary.normal,
+                boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
+              },
+            })}
+          >
+            {/* Check indicator */}
+            {isSelected && (
+              <FlexBox
+                sx={(theme) => ({
+                  position: "absolute",
+                  top: "10px",
+                  right: "10px",
+                  "& svg": {
+                    color: `${theme.semantic.primary.normal} !important`,
+                  },
+                })}
+              >
+                <IconCircleCheckFill sx={{ fontSize: "20px" }} />
+              </FlexBox>
+            )}
+
+            <FlexBox
+              alignItems="center"
+              justifyContent="center"
+              sx={(theme) => ({
+                width: "44px",
+                height: "44px",
+                borderRadius: "12px",
+                backgroundColor: isSelected
+                  ? theme.semantic.primary.normal + "18"
+                  : theme.semantic.fill.normal,
+                color: isSelected
+                  ? theme.semantic.primary.normal
+                  : theme.semantic.label.assistive,
+                transition: "all 0.2s ease",
+              })}
+            >
+              {SPREAD_ICONS[spread.type]}
+            </FlexBox>
+            <FlexBox flexDirection="column" gap="4px" alignItems="center">
+              <Typography
+                variant="label1"
+                weight="bold"
+                color={isSelected ? "semantic.label.normal" : "semantic.label.alternative"}
+              >
+                {spread.label}
+              </Typography>
+              <Typography
+                variant="caption1"
+                color="semantic.label.assistive"
+                sx={{ lineHeight: "1.4" }}
+              >
+                {spread.description}
+              </Typography>
+            </FlexBox>
+          </FlexBox>
+        );
+      })}
+    </FlexBox>
+  );
+}

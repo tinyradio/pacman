@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 360" fill="none">
+  <rect width="240" height="360" rx="12" fill="#1a1025"/>
+  <rect x="8" y="8" width="224" height="344" rx="8" stroke="#6b21a8" stroke-width="2" fill="none"/>
+  <rect x="16" y="16" width="208" height="328" rx="4" stroke="#7c3aed" stroke-width="1" stroke-dasharray="4 4" fill="none"/>
+  <!-- Center star pattern -->
+  <g transform="translate(120, 180)">
+    <circle r="60" stroke="#6b21a8" stroke-width="1" fill="none" opacity="0.5"/>
+    <circle r="40" stroke="#7c3aed" stroke-width="1" fill="none" opacity="0.4"/>
+    <circle r="20" stroke="#8b5cf6" stroke-width="1" fill="none" opacity="0.3"/>
+    <!-- 8-pointed star -->
+    <polygon points="0,-50 7,-15 40,-35 15,-7 50,0 15,7 40,35 7,15 0,50 -7,15 -40,35 -15,7 -50,0 -15,-7 -40,-35 -7,-15" fill="#6b21a8" opacity="0.6"/>
+    <circle r="8" fill="#8b5cf6" opacity="0.8"/>
+  </g>
+  <!-- Corner ornaments -->
+  <g opacity="0.4">
+    <circle cx="40" cy="40" r="6" stroke="#7c3aed" stroke-width="1" fill="none"/>
+    <circle cx="200" cy="40" r="6" stroke="#7c3aed" stroke-width="1" fill="none"/>
+    <circle cx="40" cy="320" r="6" stroke="#7c3aed" stroke-width="1" fill="none"/>
+    <circle cx="200" cy="320" r="6" stroke="#7c3aed" stroke-width="1" fill="none"/>
+  </g>
+  <!-- Top/bottom text area -->
+  <text x="120" y="34" text-anchor="middle" font-family="serif" font-size="10" fill="#7c3aed" opacity="0.6">TAROT</text>
+  <text x="120" y="346" text-anchor="middle" font-family="serif" font-size="10" fill="#7c3aed" opacity="0.6">TAROT</text>
+</svg>
