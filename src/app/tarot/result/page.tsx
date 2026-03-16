@@ -11,7 +11,6 @@ import {
 } from "@wanteddev/wds";
 import { IconRefresh, IconHome } from "@wanteddev/wds-icon";
 import { ReadingResult } from "@/components/tarot/ReadingResult";
-import { StepIndicator } from "@/components/tarot/StepIndicator";
 import {
   isValidSpread,
   isValidCategory,
@@ -46,11 +45,6 @@ function ResultContent() {
 
   return (
     <FlexBox flexDirection="column" gap="24px">
-      <StepIndicator
-        currentStep={2}
-        steps={["설정", "카드 선택", "결과"]}
-      />
-
       <ReadingResult
         cards={cards}
         category={categoryParam}

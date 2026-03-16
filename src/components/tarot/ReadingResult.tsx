@@ -1,6 +1,5 @@
 "use client";
 
-import { useRef } from "react";
 import {
   FlexBox,
   Typography,
@@ -9,10 +8,9 @@ import {
   Divider,
 } from "@wanteddev/wds";
 import { CardFlip } from "./CardFlip";
-import { ScreenshotButton } from "./ScreenshotButton";
 import { getCard } from "@/data/tarot/cards";
 import { getInterpretation } from "@/data/tarot/interpretations";
-import type { DrawnCard, Category, Spread } from "@/lib/tarot/types";
+import type { DrawnCard, Category, Spread, Position } from "@/lib/tarot/types";
 import { SPREAD_CONFIGS, CATEGORY_LABELS } from "@/lib/tarot/types";
 
 interface ReadingResultProps {
@@ -22,20 +20,19 @@ interface ReadingResultProps {
 }
 
 export function ReadingResult({ cards, category, spread }: ReadingResultProps) {
-  const resultRef = useRef<HTMLDivElement>(null);
   const config = SPREAD_CONFIGS[spread];
   const categoryLabel = CATEGORY_LABELS[category];
 
   return (
     <FlexBox flexDirection="column" gap="20px">
-      <div ref={resultRef}>
+      <div>
         <FlexBox flexDirection="column" gap="20px">
           {/* Context */}
           <FlexBox gap="8px" alignItems="center">
-            <Chip variant="outlined" size="small">
+            <Chip variant="outlined" size="small" disableInteraction sx={(theme) => ({ backgroundColor: theme.semantic.background.normal.normal })}>
               {config.label}
             </Chip>
-            <Chip variant="outlined" size="small">
+            <Chip variant="outlined" size="small" disableInteraction sx={(theme) => ({ backgroundColor: theme.semantic.background.normal.normal })}>
               {categoryLabel.label}
             </Chip>
           </FlexBox>
@@ -116,7 +113,13 @@ export function ReadingResult({ cards, category, spread }: ReadingResultProps) {
             const interpretation = getInterpretation(card.cardId);
             if (!cardData || !interpretation) return null;
 
-            const text = interpretation.categories[category][card.orientation];
+            const catData = interpretation.categories[category];
+            const positionKey = spread === "three"
+              ? (["past", "present", "future"][index] as Position)
+              : null;
+            const text = positionKey && catData.positions?.[positionKey]
+              ? catData.positions[positionKey][card.orientation]
+              : catData[card.orientation];
 
             return (
               <FlexBox
@@ -151,7 +154,7 @@ export function ReadingResult({ cards, category, spread }: ReadingResultProps) {
                   )}
                 </FlexBox>
 
-                <Divider />
+                <Divider color="semantic.fill.normal" />
 
                 {/* Reading text */}
                 <Typography
@@ -164,16 +167,13 @@ export function ReadingResult({ cards, category, spread }: ReadingResultProps) {
                 {/* Keywords */}
                 <FlexBox gap="6px" sx={{ flexWrap: "wrap" }}>
                   {cardData.keywords.map((kw) => (
-                    <Chip
+                    <ContentBadge
                       key={kw}
-                      variant="solid"
-                      size="xsmall"
-                      sx={(theme) => ({
-                        backgroundColor: theme.semantic.background.normal.normal,
-                      })}
+                      color="neutral"
+                      size="small"
                     >
                       {kw}
-                    </Chip>
+                    </ContentBadge>
                   ))}
                 </FlexBox>
               </FlexBox>
@@ -182,10 +182,6 @@ export function ReadingResult({ cards, category, spread }: ReadingResultProps) {
         </FlexBox>
       </div>
 
-      {/* Screenshot */}
-      <FlexBox justifyContent="center" sx={{ paddingTop: "4px" }}>
-        <ScreenshotButton targetRef={resultRef} />
-      </FlexBox>
     </FlexBox>
   );
 }

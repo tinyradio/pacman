@@ -10,12 +10,23 @@ export interface TarotCard {
   keywords: string[];
 }
 
+export type Position = "past" | "present" | "future";
+
+export interface OrientationText {
+  upright: string;
+  reversed: string;
+}
+
+export interface CategoryInterpretation extends OrientationText {
+  positions?: Record<Position, OrientationText>;
+}
+
 export interface CardInterpretation {
   cardId: number;
   categories: {
-    love: { upright: string; reversed: string };
-    wealth: { upright: string; reversed: string };
-    career: { upright: string; reversed: string };
+    love: CategoryInterpretation;
+    wealth: CategoryInterpretation;
+    career: CategoryInterpretation;
   };
 }
 

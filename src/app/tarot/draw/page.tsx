@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useCallback, Suspense } from "react";
+import { useState, useCallback, useRef, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import {
   FlexBox,
@@ -8,10 +8,11 @@ import {
   Button,
   Chip,
   Skeleton,
+  ActionArea,
+  ActionAreaButton,
 } from "@wanteddev/wds";
 import { CardGrid } from "@/components/tarot/CardGrid";
 import { CardSlot } from "@/components/tarot/CardSlot";
-import { StepIndicator } from "@/components/tarot/StepIndicator";
 import {
   isValidSpread,
   isValidCategory,
@@ -41,13 +42,33 @@ function DrawContent() {
 
   const [selectedCards, setSelectedCards] = useState<DrawnCard[]>([]);
 
-  const shuffledOrder = useMemo(
-    () => shuffleArray(Array.from({ length: 22 }, (_, i) => i)),
-    []
-  );
+  const defaultOrder = Array.from({ length: 22 }, (_, i) => i);
+  const [shuffledOrder, setShuffledOrder] = useState(defaultOrder);
+  const [isShuffled, setIsShuffled] = useState(false);
+
+  useEffect(() => {
+    if (!isShuffled) {
+      setShuffledOrder(shuffleArray([...defaultOrder]));
+      setIsShuffled(true);
+    }
+  }, [isShuffled]);
 
   const selectedIndices = selectedCards.map((c) => c.cardId);
   const isComplete = selectedCards.length >= config.cardCount;
+
+  const inlineCtaRef = useRef<HTMLDivElement>(null);
+  const [showFixedCta, setShowFixedCta] = useState(false);
+
+  useEffect(() => {
+    const el = inlineCtaRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setShowFixedCta(!entry.isIntersecting),
+      { threshold: 0.1 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   const handleSelect = useCallback(
     (cardIndex: number) => {
@@ -73,17 +94,12 @@ function DrawContent() {
   return (
     <>
       <FlexBox flexDirection="column" gap="24px" sx={{ paddingBottom: "80px" }}>
-        <StepIndicator
-          currentStep={1}
-          steps={["설정", "카드 선택", "결과"]}
-        />
-
         {/* Context chips */}
         <FlexBox gap="8px" alignItems="center">
-          <Chip variant="outlined" size="small">
+          <Chip variant="outlined" size="small" disableInteraction sx={(theme) => ({ backgroundColor: theme.semantic.background.normal.normal })}>
             {config.label}
           </Chip>
-          <Chip variant="outlined" size="small">
+          <Chip variant="outlined" size="small" disableInteraction sx={(theme) => ({ backgroundColor: theme.semantic.background.normal.normal })}>
             {categoryLabel.label}
           </Chip>
           <FlexBox flex="1" />
@@ -137,24 +153,9 @@ function DrawContent() {
           maxSelections={config.cardCount}
           shuffledOrder={shuffledOrder}
         />
-      </FlexBox>
 
-      {/* Bottom action area */}
-      <FlexBox
-        sx={(theme) => ({
-          position: "fixed",
-          bottom: 0,
-          left: 0,
-          right: 0,
-          padding: "12px 20px",
-          paddingBottom: "calc(12px + env(safe-area-inset-bottom))",
-          backgroundColor: theme.semantic.background.normal.normal,
-          borderTop: `1px solid ${theme.semantic.line.normal}`,
-          zIndex: 100,
-        })}
-        justifyContent="center"
-      >
-        <FlexBox sx={{ maxWidth: "560px", width: "100%" }}>
+        {/* Inline CTA */}
+        <div ref={inlineCtaRef}>
           <Button
             variant="solid"
             color="primary"
@@ -167,8 +168,43 @@ function DrawContent() {
               ? "카드 확인하기"
               : `${config.cardCount - selectedCards.length}장 더 선택하세요`}
           </Button>
-        </FlexBox>
+        </div>
       </FlexBox>
+
+      {/* Fixed bottom CTA - only visible when inline CTA is scrolled out of view */}
+      <ActionArea
+        variant="cancel"
+        background
+        sx={{
+          position: "fixed",
+          bottom: 0,
+          left: 0,
+          right: 0,
+          zIndex: 100,
+          opacity: showFixedCta ? 1 : 0,
+          pointerEvents: showFixedCta ? "auto" : "none",
+          transform: showFixedCta ? "translateY(0)" : "translateY(100%)",
+          transition: "opacity 0.25s ease, transform 0.25s ease",
+          "& [data-role='action-area-wrapper']": {
+            width: "100%",
+            maxWidth: "560px",
+            margin: "0 auto",
+            padding: "10px 20px 0",
+          },
+        }}
+      >
+        <ActionAreaButton
+          variant="main"
+          buttonVariant="solid"
+          buttonColor="primary"
+          onClick={handleReveal}
+          disabled={!isComplete}
+        >
+          {isComplete
+            ? "카드 확인하기"
+            : `${config.cardCount - selectedCards.length}장 더 선택하세요`}
+        </ActionAreaButton>
+      </ActionArea>
     </>
   );
 }
