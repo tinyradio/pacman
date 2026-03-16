@@ -27,12 +27,31 @@ export default function TarotLayout({
   const toast = useToast();
 
   async function handleShare() {
-    const url = window.location.href;
+    const url = `${window.location.origin}/tarot`;
     try {
-      await navigator.clipboard.writeText(url);
+      if (navigator.clipboard) {
+        await navigator.clipboard.writeText(url);
+      } else {
+        const textarea = document.createElement("textarea");
+        textarea.value = url;
+        textarea.style.position = "fixed";
+        textarea.style.opacity = "0";
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textarea);
+      }
       toast({ content: "링크가 복사되었습니다", duration: 2000 });
     } catch {
       toast({ content: "링크 복사에 실패했습니다", duration: 2000 });
+    }
+  }
+
+  function handleBack() {
+    if (window.history.length > 1) {
+      router.back();
+    } else {
+      router.push("/tarot");
     }
   }
 
@@ -63,7 +82,7 @@ export default function TarotLayout({
           <IconButton
             variant="normal"
             aria-label="뒤로 가기"
-            onClick={() => router.back()}
+            onClick={handleBack}
             sx={{ flexShrink: 0 }}
           >
             <IconChevronLeft />

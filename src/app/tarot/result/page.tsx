@@ -1,11 +1,10 @@
 "use client";
 
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import {
   FlexBox,
-  Typography,
   Button,
   Skeleton,
 } from "@wanteddev/wds";
@@ -26,29 +25,25 @@ function ResultContent() {
   const categoryParam = searchParams.get("category") ?? "";
   const cardsParam = searchParams.get("cards") ?? "";
 
-  if (
-    !isValidSpread(spreadParam) ||
-    !isValidCategory(categoryParam) ||
-    !cardsParam
-  ) {
-    router.replace("/tarot/select");
-    return null;
-  }
+  const isValid = isValidSpread(spreadParam) && isValidCategory(categoryParam) && !!cardsParam;
+  const cards = isValid ? decodeDrawnCards(cardsParam) : null;
+  const config = isValid ? SPREAD_CONFIGS[spreadParam] : null;
+  const hasValidCards = cards && config && cards.length === config.cardCount;
 
-  const cards = decodeDrawnCards(cardsParam);
-  const config = SPREAD_CONFIGS[spreadParam];
+  useEffect(() => {
+    if (!isValid || !hasValidCards) {
+      router.replace("/tarot/select");
+    }
+  }, [isValid, hasValidCards, router]);
 
-  if (!cards || cards.length !== config.cardCount) {
-    router.replace("/tarot/select");
-    return null;
-  }
+  if (!isValid || !hasValidCards || !cards || !config) return null;
 
   return (
     <FlexBox flexDirection="column" gap="24px">
       <ReadingResult
         cards={cards}
-        category={categoryParam}
-        spread={spreadParam}
+        category={categoryParam as "love" | "wealth" | "career"}
+        spread={spreadParam as "one" | "three"}
       />
 
       <FlexBox gap="12px">

@@ -25,163 +25,162 @@ export function ReadingResult({ cards, category, spread }: ReadingResultProps) {
 
   return (
     <FlexBox flexDirection="column" gap="20px">
-      <div>
-        <FlexBox flexDirection="column" gap="20px">
-          {/* Context */}
-          <FlexBox gap="8px" alignItems="center">
-            <Chip variant="outlined" size="small" disableInteraction sx={(theme) => ({ backgroundColor: theme.semantic.background.normal.normal })}>
-              {config.label}
-            </Chip>
-            <Chip variant="outlined" size="small" disableInteraction sx={(theme) => ({ backgroundColor: theme.semantic.background.normal.normal })}>
-              {categoryLabel.label}
-            </Chip>
-          </FlexBox>
+      {/* Context */}
+      <FlexBox gap="8px" alignItems="center">
+        <Chip
+          variant="outlined"
+          size="small"
+          disableInteraction
+          sx={(theme) => ({ backgroundColor: theme.semantic.background.normal.normal })}
+        >
+          {config.label}
+        </Chip>
+        <Chip
+          variant="outlined"
+          size="small"
+          disableInteraction
+          sx={(theme) => ({ backgroundColor: theme.semantic.background.normal.normal })}
+        >
+          {categoryLabel.label}
+        </Chip>
+      </FlexBox>
 
-          {/* Card reveal area */}
-          <FlexBox
-            flexDirection="column"
-            alignItems="center"
-            sx={(theme) => ({
-              padding: "32px 20px 28px",
-              borderRadius: "20px",
-              outline: `1px solid ${theme.semantic.line.normal}`,
-              backgroundColor: theme.semantic.background.normal.normal,
-            })}
-          >
-            <FlexBox
-              justifyContent="center"
-              gap={cards.length === 1 ? "0px" : "24px"}
-            >
-              {cards.map((card, index) => {
-                const cardData = getCard(card.cardId);
-                return (
-                  <FlexBox
-                    key={card.cardId}
-                    flexDirection="column"
-                    alignItems="center"
-                    gap="12px"
-                  >
-                    {cards.length > 1 && (
-                      <Typography
-                        variant="caption2"
-                        weight="bold"
-                        color="semantic.label.assistive"
-                        sx={{ letterSpacing: "0.5px" }}
-                      >
-                        {config.positions[index]}
-                      </Typography>
-                    )}
-                    <CardFlip
-                      cardId={card.cardId}
-                      orientation={card.orientation}
-                      delay={index * 800}
-                      cardNameKo={cardData?.nameKo ?? ""}
-                    />
-                    <FlexBox
-                      flexDirection="column"
-                      alignItems="center"
-                      gap="4px"
-                      sx={{ marginTop: "4px" }}
-                    >
-                      <Typography variant="label1" weight="bold">
-                        {cardData?.nameKo}
-                      </Typography>
-                      <Typography
-                        variant="caption2"
-                        color="semantic.label.disable"
-                      >
-                        {cardData?.name}
-                      </Typography>
-                      <ContentBadge
-                        color={
-                          card.orientation === "reversed" ? "accent" : "neutral"
-                        }
-                        size="small"
-                      >
-                        {card.orientation === "reversed" ? "역방향" : "정방향"}
-                      </ContentBadge>
-                    </FlexBox>
-                  </FlexBox>
-                );
-              })}
-            </FlexBox>
-          </FlexBox>
-
-          {/* Interpretations */}
+      {/* Card reveal area */}
+      <FlexBox
+        flexDirection="column"
+        alignItems="center"
+        sx={(theme) => ({
+          padding: "32px 20px 28px",
+          borderRadius: "20px",
+          outline: `1px solid ${theme.semantic.line.normal}`,
+          backgroundColor: theme.semantic.background.normal.normal,
+        })}
+      >
+        <FlexBox
+          justifyContent="center"
+          gap={cards.length === 1 ? "0px" : "24px"}
+        >
           {cards.map((card, index) => {
             const cardData = getCard(card.cardId);
-            const interpretation = getInterpretation(card.cardId);
-            if (!cardData || !interpretation) return null;
-
-            const catData = interpretation.categories[category];
-            const positionKey = spread === "three"
-              ? (["past", "present", "future"][index] as Position)
-              : null;
-            const text = positionKey && catData.positions?.[positionKey]
-              ? catData.positions[positionKey][card.orientation]
-              : catData[card.orientation];
-
             return (
               <FlexBox
                 key={card.cardId}
                 flexDirection="column"
-                gap="16px"
-                sx={(theme) => ({
-                  padding: "24px 20px",
-                  borderRadius: "20px",
-                  outline: `1px solid ${theme.semantic.line.normal}`,
-                  backgroundColor: theme.semantic.background.normal.normal,
-                })}
+                alignItems="center"
+                gap="12px"
               >
-                {/* Position label + Card title */}
-                <FlexBox alignItems="flex-start" justifyContent="space-between">
-                  <FlexBox flexDirection="column" gap="2px">
-                    <Typography variant="headline2" weight="bold">
-                      {cardData.nameKo}
-                    </Typography>
-                    <Typography
-                      variant="caption1"
-                      color="semantic.label.disable"
-                    >
-                      {cardData.name} ·{" "}
-                      {card.orientation === "reversed" ? "역방향" : "정방향"}
-                    </Typography>
-                  </FlexBox>
-                  {cards.length > 1 && (
-                    <Chip variant="outlined" size="xsmall">
-                      {config.positions[index]}
-                    </Chip>
-                  )}
-                </FlexBox>
-
-                <Divider color="semantic.fill.normal" />
-
-                {/* Reading text */}
-                <Typography
-                  variant="body2-reading"
-                  color="semantic.label.alternative"
+                {cards.length > 1 && (
+                  <Typography
+                    variant="caption2"
+                    weight="bold"
+                    color="semantic.label.assistive"
+                    sx={{ letterSpacing: "0.5px" }}
+                  >
+                    {config.positions[index]}
+                  </Typography>
+                )}
+                <CardFlip
+                  cardId={card.cardId}
+                  orientation={card.orientation}
+                  delay={index * 800}
+                  cardNameKo={cardData?.nameKo ?? ""}
+                />
+                <FlexBox
+                  flexDirection="column"
+                  alignItems="center"
+                  gap="4px"
+                  sx={{ marginTop: "4px" }}
                 >
-                  {text}
-                </Typography>
-
-                {/* Keywords */}
-                <FlexBox gap="6px" sx={{ flexWrap: "wrap" }}>
-                  {cardData.keywords.map((kw) => (
-                    <ContentBadge
-                      key={kw}
-                      color="neutral"
-                      size="small"
-                    >
-                      {kw}
-                    </ContentBadge>
-                  ))}
+                  <Typography variant="label1" weight="bold">
+                    {cardData?.nameKo}
+                  </Typography>
+                  <Typography
+                    variant="caption2"
+                    color="semantic.label.disable"
+                  >
+                    {cardData?.name}
+                  </Typography>
+                  <ContentBadge
+                    color={card.orientation === "reversed" ? "accent" : "neutral"}
+                    size="small"
+                  >
+                    {card.orientation === "reversed" ? "역방향" : "정방향"}
+                  </ContentBadge>
                 </FlexBox>
               </FlexBox>
             );
           })}
         </FlexBox>
-      </div>
+      </FlexBox>
 
+      {/* Interpretations */}
+      {cards.map((card, index) => {
+        const cardData = getCard(card.cardId);
+        const interpretation = getInterpretation(card.cardId);
+        if (!cardData || !interpretation) return null;
+
+        const catData = interpretation.categories[category];
+        const positionKey = spread === "three"
+          ? (["past", "present", "future"][index] as Position)
+          : null;
+        const text = positionKey && catData.positions?.[positionKey]
+          ? catData.positions[positionKey][card.orientation]
+          : catData[card.orientation];
+
+        return (
+          <FlexBox
+            key={card.cardId}
+            flexDirection="column"
+            gap="16px"
+            sx={(theme) => ({
+              padding: "24px 20px",
+              borderRadius: "20px",
+              outline: `1px solid ${theme.semantic.line.normal}`,
+              backgroundColor: theme.semantic.background.normal.normal,
+            })}
+          >
+            {/* Position label + Card title */}
+            <FlexBox alignItems="flex-start" justifyContent="space-between">
+              <FlexBox flexDirection="column" gap="2px">
+                <Typography variant="headline2" weight="bold">
+                  {cardData.nameKo}
+                </Typography>
+                <Typography
+                  variant="caption1"
+                  color="semantic.label.disable"
+                >
+                  {cardData.name} ·{" "}
+                  {card.orientation === "reversed" ? "역방향" : "정방향"}
+                </Typography>
+              </FlexBox>
+              {cards.length > 1 && (
+                <Chip variant="outlined" size="xsmall" disableInteraction>
+                  {config.positions[index]}
+                </Chip>
+              )}
+            </FlexBox>
+
+            <Divider color="semantic.fill.normal" />
+
+            {/* Reading text */}
+            <Typography
+              variant="body2-reading"
+              color="semantic.label.alternative"
+            >
+              {text}
+            </Typography>
+
+            {/* Keywords */}
+            <FlexBox gap="6px" sx={{ flexWrap: "wrap" }}>
+              {cardData.keywords.map((kw) => (
+                <ContentBadge key={kw} color="neutral" size="small">
+                  {kw}
+                </ContentBadge>
+              ))}
+            </FlexBox>
+          </FlexBox>
+        );
+      })}
     </FlexBox>
   );
 }

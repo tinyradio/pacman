@@ -22,6 +22,7 @@ export function CardSlot({ index, label, filled, onClick }: CardSlotProps) {
       </Typography>
       <FlexBox
         as="button"
+        type="button"
         alignItems="center"
         justifyContent="center"
         onClick={onClick}
@@ -41,7 +42,7 @@ export function CardSlot({ index, label, filled, onClick }: CardSlotProps) {
             ? `2px solid ${theme.semantic.primary.normal}`
             : `1.5px dashed ${theme.semantic.line.normal}`,
           backgroundColor: filled
-            ? theme.semantic.primary.normal + "08"
+            ? `color-mix(in srgb, ${theme.semantic.primary.normal} 3%, transparent)`
             : theme.semantic.background.normal.normal,
           cursor: filled ? "pointer" : "default",
           transition: "all 0.25s ease",

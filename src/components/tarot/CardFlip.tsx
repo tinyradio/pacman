@@ -9,7 +9,6 @@ interface CardFlipProps {
   orientation: Orientation;
   delay?: number;
   cardNameKo: string;
-  onFlipComplete?: () => void;
 }
 
 export function CardFlip({
@@ -17,7 +16,6 @@ export function CardFlip({
   orientation,
   delay = 0,
   cardNameKo,
-  onFlipComplete,
 }: CardFlipProps) {
   const [flipped, setFlipped] = useState(false);
 
@@ -27,15 +25,12 @@ export function CardFlip({
     ).matches;
 
     const timeout = setTimeout(
-      () => {
-        setFlipped(true);
-        onFlipComplete?.();
-      },
+      () => setFlipped(true),
       prefersReducedMotion ? 0 : delay
     );
 
     return () => clearTimeout(timeout);
-  }, [delay, onFlipComplete]);
+  }, [delay]);
 
   return (
     <div

@@ -38,6 +38,7 @@ export function CategorySelector({
           <FlexBox
             key={key}
             as="button"
+            type="button"
             flexDirection="column"
             alignItems="center"
             gap="10px"
@@ -84,7 +85,7 @@ export function CategorySelector({
                 height: "44px",
                 borderRadius: "12px",
                 backgroundColor: isSelected
-                  ? theme.semantic.primary.normal + "18"
+                  ? `color-mix(in srgb, ${theme.semantic.primary.normal} 10%, transparent)`
                   : theme.semantic.fill.normal,
                 color: isSelected
                   ? theme.semantic.primary.normal

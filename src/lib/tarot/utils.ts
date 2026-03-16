@@ -24,17 +24,18 @@ export function encodeDrawnCards(cards: DrawnCard[]): string {
 export function decodeDrawnCards(param: string): DrawnCard[] | null {
   try {
     const parts = param.split(",");
-    const cards: DrawnCard[] = parts.map((part) => {
+    const cards: (DrawnCard | null)[] = parts.map((part) => {
       const isReversed = part.endsWith("r");
       const idStr = isReversed ? part.slice(0, -1) : part;
       const cardId = parseInt(idStr, 10);
-      if (isNaN(cardId) || cardId < 0 || cardId > 21) return null!;
+      if (isNaN(cardId) || cardId < 0 || cardId > 21) return null;
       return { cardId, orientation: isReversed ? "reversed" as const : "upright" as const };
     });
     if (cards.some((c) => c === null)) return null;
-    const ids = new Set(cards.map((c) => c.cardId));
-    if (ids.size !== cards.length) return null;
-    return cards;
+    const validCards = cards as DrawnCard[];
+    const ids = new Set(validCards.map((c) => c.cardId));
+    if (ids.size !== validCards.length) return null;
+    return validCards;
   } catch {
     return null;
   }

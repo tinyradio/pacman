@@ -60,8 +60,8 @@ export const SPREAD_CONFIGS: Record<Spread, SpreadConfig> = {
   },
 };
 
-export const CATEGORY_LABELS: Record<Category, { label: string; emoji: string; description: string }> = {
-  love: { label: "연애", emoji: "💜", description: "사랑과 관계에 대한 운세" },
-  wealth: { label: "재물", emoji: "✨", description: "금전과 재물에 대한 운세" },
-  career: { label: "직장", emoji: "💼", description: "직장과 커리어에 대한 운세" },
+export const CATEGORY_LABELS: Record<Category, { label: string; description: string }> = {
+  love: { label: "연애", description: "사랑과 관계에 대한 운세" },
+  wealth: { label: "재물", description: "금전과 재물에 대한 운세" },
+  career: { label: "직장", description: "직장과 커리어에 대한 운세" },
 };

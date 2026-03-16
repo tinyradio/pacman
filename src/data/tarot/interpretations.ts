@@ -15,6 +15,10 @@ export const INTERPRETATIONS: CardInterpretation[] = [
   ...CARDS_19_21,
 ] as CardInterpretation[];
 
+const INTERPRETATION_MAP = new Map(
+  INTERPRETATIONS.map((i) => [i.cardId, i])
+);
+
 export function getInterpretation(cardId: number): CardInterpretation | undefined {
-  return INTERPRETATIONS.find((i) => i.cardId === cardId);
+  return INTERPRETATION_MAP.get(cardId);
 }

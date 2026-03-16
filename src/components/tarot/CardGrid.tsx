@@ -1,5 +1,6 @@
 "use client";
 
+import { useMemo, memo } from "react";
 import Image from "next/image";
 import { FlexBox } from "@wanteddev/wds";
 
@@ -11,14 +12,15 @@ interface CardGridProps {
   shuffledOrder: number[];
 }
 
-export function CardGrid({
+export const CardGrid = memo(function CardGrid({
   totalCards,
   selectedIndices,
   onSelect,
   maxSelections,
   shuffledOrder,
 }: CardGridProps) {
-  const isMaxSelected = selectedIndices.length >= maxSelections;
+  const selectedSet = useMemo(() => new Set(selectedIndices), [selectedIndices]);
+  const isMaxSelected = selectedSet.size >= maxSelections;
 
   return (
     <FlexBox
@@ -32,49 +34,69 @@ export function CardGrid({
         outline: `1px solid ${theme.semantic.line.normal}`,
       })}
       role="grid"
-      aria-label={`타로 카드 ${totalCards}장 중 ${selectedIndices.length}/${maxSelections}장 선택됨`}
+      aria-label={`타로 카드 ${totalCards}장 중 ${selectedSet.size}/${maxSelections}장 선택됨`}
     >
       {shuffledOrder.map((cardIndex) => {
-        const isSelected = selectedIndices.includes(cardIndex);
+        const isSelected = selectedSet.has(cardIndex);
         const isDisabled = isSelected || isMaxSelected;
         return (
-          <button
+          <CardGridItem
             key={cardIndex}
-            role="gridcell"
-            onClick={() => !isDisabled && onSelect(cardIndex)}
-            disabled={isDisabled}
-            style={{
-              position: "relative",
-              width: "100%",
-              aspectRatio: "2/3",
-              borderRadius: "8px",
-              overflow: "hidden",
-              transition: "all 0.2s ease",
-              opacity: isSelected ? 0.12 : isMaxSelected ? 0.3 : 1,
-              transform: isSelected
-                ? "scale(0.88)"
-                : "scale(1)",
-              cursor: isDisabled ? "not-allowed" : "pointer",
-              border: "none",
-              padding: 0,
-              background: "none",
-              boxShadow:
-                !isDisabled
-                  ? "0 1px 3px rgba(0,0,0,0.06)"
-                  : "none",
-            }}
-            aria-label={`카드 ${cardIndex + 1}번`}
-            aria-selected={isSelected}
-          >
-            <Image
-              src="/cards/back.svg"
-              alt=""
-              fill
-              style={{ objectFit: "cover" }}
-            />
-          </button>
+            cardIndex={cardIndex}
+            isSelected={isSelected}
+            isDisabled={isDisabled}
+            isMaxSelected={isMaxSelected}
+            onSelect={onSelect}
+          />
         );
       })}
     </FlexBox>
   );
-}
+});
+
+const CardGridItem = memo(function CardGridItem({
+  cardIndex,
+  isSelected,
+  isDisabled,
+  isMaxSelected,
+  onSelect,
+}: {
+  cardIndex: number;
+  isSelected: boolean;
+  isDisabled: boolean;
+  isMaxSelected: boolean;
+  onSelect: (index: number) => void;
+}) {
+  return (
+    <button
+      type="button"
+      role="gridcell"
+      onClick={() => !isDisabled && onSelect(cardIndex)}
+      disabled={isDisabled}
+      style={{
+        position: "relative",
+        width: "100%",
+        aspectRatio: "2/3",
+        borderRadius: "8px",
+        overflow: "hidden",
+        transition: "all 0.2s ease",
+        opacity: isSelected ? 0.12 : isMaxSelected ? 0.3 : 1,
+        transform: isSelected ? "scale(0.88)" : "scale(1)",
+        cursor: isDisabled ? "not-allowed" : "pointer",
+        border: "none",
+        padding: 0,
+        background: "none",
+        boxShadow: !isDisabled ? "0 1px 3px rgba(0,0,0,0.06)" : "none",
+      }}
+      aria-label={`카드 ${cardIndex + 1}번`}
+      aria-selected={isSelected}
+    >
+      <Image
+        src="/cards/back.svg"
+        alt=""
+        fill
+        style={{ objectFit: "cover" }}
+      />
+    </button>
+  );
+});

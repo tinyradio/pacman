@@ -26,5 +26,5 @@ export const MAJOR_ARCANA: TarotCard[] = [
 ];
 
 export function getCard(id: number): TarotCard | undefined {
-  return MAJOR_ARCANA.find((c) => c.id === id);
+  return MAJOR_ARCANA[id];
 }

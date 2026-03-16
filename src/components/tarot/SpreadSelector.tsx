@@ -30,6 +30,7 @@ export function SpreadSelector({ selected, onSelect }: SpreadSelectorProps) {
           <FlexBox
             key={spread.type}
             as="button"
+            type="button"
             flexDirection="column"
             alignItems="center"
             gap="12px"
@@ -77,7 +78,7 @@ export function SpreadSelector({ selected, onSelect }: SpreadSelectorProps) {
                 height: "44px",
                 borderRadius: "12px",
                 backgroundColor: isSelected
-                  ? theme.semantic.primary.normal + "18"
+                  ? `color-mix(in srgb, ${theme.semantic.primary.normal} 10%, transparent)`
                   : theme.semantic.fill.normal,
                 color: isSelected
                   ? theme.semantic.primary.normal

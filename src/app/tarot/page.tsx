@@ -47,7 +47,7 @@ export default function TarotLandingPage() {
         variant="solid"
         color="primary"
         size="large"
-        sx={{ width: "360px", alignSelf: "center" }}
+        sx={{ maxWidth: "360px", width: "100%", alignSelf: "center" }}
       >
         시작하기
       </Button>

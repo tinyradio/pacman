@@ -23,6 +23,8 @@ import {
 import { SPREAD_CONFIGS, CATEGORY_LABELS } from "@/lib/tarot/types";
 import type { DrawnCard } from "@/lib/tarot/types";
 
+const DEFAULT_ORDER = Array.from({ length: 22 }, (_, i) => i);
+
 function DrawContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -30,31 +32,10 @@ function DrawContent() {
   const spreadParam = searchParams.get("spread") ?? "";
   const categoryParam = searchParams.get("category") ?? "";
 
-  if (!isValidSpread(spreadParam) || !isValidCategory(categoryParam)) {
-    router.replace("/tarot/select");
-    return null;
-  }
-
-  const spread = spreadParam;
-  const category = categoryParam;
-  const config = SPREAD_CONFIGS[spread];
-  const categoryLabel = CATEGORY_LABELS[category];
+  const isValid = isValidSpread(spreadParam) && isValidCategory(categoryParam);
 
   const [selectedCards, setSelectedCards] = useState<DrawnCard[]>([]);
-
-  const defaultOrder = Array.from({ length: 22 }, (_, i) => i);
-  const [shuffledOrder, setShuffledOrder] = useState(defaultOrder);
-  const [isShuffled, setIsShuffled] = useState(false);
-
-  useEffect(() => {
-    if (!isShuffled) {
-      setShuffledOrder(shuffleArray([...defaultOrder]));
-      setIsShuffled(true);
-    }
-  }, [isShuffled]);
-
-  const selectedIndices = selectedCards.map((c) => c.cardId);
-  const isComplete = selectedCards.length >= config.cardCount;
+  const [shuffledOrder] = useState(() => shuffleArray([...DEFAULT_ORDER]));
 
   const inlineCtaRef = useRef<HTMLDivElement>(null);
   const [showFixedCta, setShowFixedCta] = useState(false);
@@ -70,25 +51,41 @@ function DrawContent() {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    if (!isValid) {
+      router.replace("/tarot/select");
+    }
+  }, [isValid, router]);
+
+  const config = isValid ? SPREAD_CONFIGS[spreadParam] : null;
+  const categoryLabel = isValid ? CATEGORY_LABELS[categoryParam] : null;
+  const selectedIndices = selectedCards.map((c) => c.cardId);
+  const isComplete = config ? selectedCards.length >= config.cardCount : false;
+
+  const configRef = useRef(config);
+  configRef.current = config;
+
   const handleSelect = useCallback(
     (cardIndex: number) => {
-      if (selectedCards.length >= config.cardCount) return;
-      const orientation = determineOrientation();
-      setSelectedCards((prev) => [
-        ...prev,
-        { cardId: cardIndex, orientation },
-      ]);
+      setSelectedCards((prev) => {
+        const c = configRef.current;
+        if (!c || prev.length >= c.cardCount) return prev;
+        const orientation = determineOrientation();
+        return [...prev, { cardId: cardIndex, orientation }];
+      });
     },
-    [selectedCards.length, config.cardCount]
+    []
   );
 
   const handleRemove = useCallback((slotIndex: number) => {
     setSelectedCards((prev) => prev.filter((_, i) => i !== slotIndex));
   }, []);
 
+  if (!isValid || !config || !categoryLabel) return null;
+
   function handleReveal() {
-    if (!isComplete) return;
-    router.push(buildResultUrl(spread, category, selectedCards));
+    if (!isComplete || !config) return;
+    router.push(buildResultUrl(spreadParam as "one" | "three", categoryParam as "love" | "wealth" | "career", selectedCards));
   }
 
   return (
