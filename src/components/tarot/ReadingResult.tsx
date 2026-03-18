@@ -28,18 +28,18 @@ export function ReadingResult({ cards, category, spread }: ReadingResultProps) {
       {/* Context */}
       <FlexBox gap="8px" alignItems="center">
         <Chip
-          variant="outlined"
+          variant="solid"
           size="small"
           disableInteraction
-          sx={(theme) => ({ backgroundColor: theme.semantic.background.normal.normal, border: "none", outline: "none" })}
+          sx={(theme) => ({ backgroundColor: theme.semantic.fill.alternative })}
         >
           {config.label}
         </Chip>
         <Chip
-          variant="outlined"
+          variant="solid"
           size="small"
           disableInteraction
-          sx={(theme) => ({ backgroundColor: theme.semantic.background.normal.normal, border: "none", outline: "none" })}
+          sx={(theme) => ({ backgroundColor: theme.semantic.fill.alternative })}
         >
           {categoryLabel.label}
         </Chip>
