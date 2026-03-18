@@ -69,7 +69,7 @@ export function CardFlip({
           }}
         >
           <Image
-            src="/cards/back.svg"
+            src="/cards/back.png"
             alt="카드 뒷면"
             fill
             style={{ objectFit: "cover" }}

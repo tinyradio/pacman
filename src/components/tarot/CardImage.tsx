@@ -19,7 +19,7 @@ export function CardImage({
   if (!revealed) {
     return (
       <Image
-        src="/cards/back.svg"
+        src="/cards/back.png"
         alt="타로 카드 뒷면"
         width={240}
         height={360}

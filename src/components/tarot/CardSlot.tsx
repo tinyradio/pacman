@@ -58,7 +58,7 @@ export function CardSlot({ index, label, filled, onClick }: CardSlotProps) {
       >
         {filled ? (
           <Image
-            src="/cards/back.svg"
+            src="/cards/back.png"
             alt="선택된 카드"
             fill
             style={{ objectFit: "cover", borderRadius: "10px" }}
