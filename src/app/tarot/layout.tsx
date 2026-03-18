@@ -74,6 +74,7 @@ export default function TarotLayout({
             height: "56px",
             padding: "0 16px",
             backgroundColor: theme.semantic.background.normal.normal,
+            boxShadow: theme.semantic.elevation.shadow.normal.xsmall,
             position: "sticky",
             top: 0,
             zIndex: 50,
