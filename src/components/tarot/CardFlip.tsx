@@ -36,8 +36,8 @@ export function CardFlip({
     <div
       style={{
         position: "relative",
-        width: "120px",
-        height: "180px",
+        width: "108px",
+        height: "162px",
         perspective: "800px",
       }}
     >
