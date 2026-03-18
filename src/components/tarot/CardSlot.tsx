@@ -39,7 +39,7 @@ export function CardSlot({ index, label, filled, onClick }: CardSlotProps) {
           borderRadius: "12px",
           border: "none",
           outline: filled
-            ? `2px solid ${theme.semantic.primary.normal}`
+            ? "none"
             : `1.5px dashed ${theme.semantic.line.normal}`,
           backgroundColor: filled
             ? theme.semantic.background.normal.normal
