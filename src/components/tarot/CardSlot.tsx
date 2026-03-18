@@ -41,7 +41,9 @@ export function CardSlot({ index, label, filled, onClick }: CardSlotProps) {
           outline: filled
             ? `2px solid ${theme.semantic.primary.normal}`
             : `1.5px dashed ${theme.semantic.line.normal}`,
-          backgroundColor: theme.semantic.background.normal.normal,
+          backgroundColor: filled
+            ? theme.semantic.background.normal.normal
+            : theme.semantic.fill.alternative,
           cursor: filled ? "pointer" : "default",
           transition: "all 0.25s ease",
           overflow: "hidden",

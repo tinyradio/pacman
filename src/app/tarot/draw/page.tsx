@@ -116,7 +116,7 @@ function DrawContent() {
           sx={(theme) => ({
             padding: "24px",
             borderRadius: "16px",
-            backgroundColor: theme.semantic.fill.normal,
+            backgroundColor: theme.semantic.background.normal.normal,
           })}
         >
           {config.positions.map((label, i) => (
