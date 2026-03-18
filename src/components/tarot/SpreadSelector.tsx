@@ -44,7 +44,7 @@ export function SpreadSelector({ selected, onSelect }: SpreadSelectorProps) {
               outline: "none",
               backgroundColor: isSelected
                 ? theme.semantic.background.normal.normal
-                : "rgba(255, 255, 255, 0.8)",
+                : `rgba(255, 255, 255, ${theme.opacity[74]})`,
               cursor: "pointer",
               textAlign: "center",
               transition: "all 0.2s ease",
