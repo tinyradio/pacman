@@ -52,7 +52,7 @@ export function ReadingResult({ cards, category, spread }: ReadingResultProps) {
         sx={(theme) => ({
           padding: "32px 20px 28px",
           borderRadius: "20px",
-          boxShadow: theme.semantic.elevation.shadow.normal.xsmall,
+          boxShadow: "none",
           backgroundColor: theme.semantic.background.normal.normal,
         })}
       >
@@ -136,7 +136,7 @@ export function ReadingResult({ cards, category, spread }: ReadingResultProps) {
             sx={(theme) => ({
               padding: "24px 20px",
               borderRadius: "20px",
-              boxShadow: theme.semantic.elevation.shadow.normal.xsmall,
+              boxShadow: "none",
               backgroundColor: theme.semantic.background.normal.normal,
             })}
           >
