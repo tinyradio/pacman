@@ -36,7 +36,7 @@ export function CardSlot({ index, label, filled, onClick }: CardSlotProps) {
           position: "relative",
           width: "64px",
           height: "96px",
-          borderRadius: "4px",
+          borderRadius: "6px",
           border: "none",
           outline: filled
             ? "none"
