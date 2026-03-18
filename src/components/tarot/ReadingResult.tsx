@@ -45,7 +45,7 @@ export function ReadingResult({ cards, category, spread }: ReadingResultProps) {
           sx={{
             backgroundColor: "white",
             "& > div": { backgroundColor: "transparent !important" },
-          })}
+          }}
         >
           {categoryLabel.label}
         </Chip>
