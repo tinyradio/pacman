@@ -74,7 +74,7 @@ export function SpreadSelector({ selected, onSelect }: SpreadSelectorProps) {
                 height: "44px",
                 borderRadius: "12px",
                 backgroundColor: isSelected
-                  ? theme.semantic.primary.alternative
+                  ? theme.atomic.blue[95]
                   : theme.semantic.fill.normal,
                 color: isSelected
                   ? theme.semantic.primary.normal
