@@ -65,7 +65,7 @@ export function CardFlip({
             borderRadius: "12px",
             overflow: "hidden",
             backfaceVisibility: "hidden",
-            boxShadow: "0 4px 16px rgba(0,0,0,0.12)",
+            boxShadow: "none",
           }}
         >
           <Image
@@ -84,7 +84,7 @@ export function CardFlip({
             overflow: "hidden",
             backfaceVisibility: "hidden",
             transform: "rotateY(180deg)",
-            boxShadow: "0 4px 16px rgba(0,0,0,0.12)",
+            boxShadow: "none",
           }}
         >
           <div
