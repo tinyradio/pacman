@@ -90,7 +90,7 @@ export function SpreadSelector({ selected, onSelect }: SpreadSelectorProps) {
               <Typography
                 variant="label1"
                 weight="bold"
-                color={isSelected ? "semantic.label.normal" : "semantic.label.alternative"}
+                color={isSelected ? "semantic.label.normal" : "semantic.label.assistive"}
               >
                 {spread.label}
               </Typography>
