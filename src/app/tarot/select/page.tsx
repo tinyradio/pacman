@@ -53,7 +53,7 @@ export default function SelectPage() {
             <Typography variant="headline2" weight="bold">
               스프레드
             </Typography>
-            <Typography variant="caption1" color="semantic.label.assistive">
+            <Typography variant="caption1" color="semantic.label.alternative">
               리딩 방식을 선택하세요
             </Typography>
           </FlexBox>
@@ -66,7 +66,7 @@ export default function SelectPage() {
             <Typography variant="headline2" weight="bold">
               카테고리
             </Typography>
-            <Typography variant="caption1" color="semantic.label.assistive">
+            <Typography variant="caption1" color="semantic.label.alternative">
               궁금한 운세 분야를 선택하세요
             </Typography>
           </FlexBox>
