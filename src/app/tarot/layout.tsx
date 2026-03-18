@@ -115,7 +115,7 @@ export default function TarotLayout({
           maxWidth: "560px",
           width: "100%",
           margin: "0 auto",
-          padding: "48px 20px 64px",
+          padding: "24px 20px 64px",
           flex: 1,
         }}
       >
