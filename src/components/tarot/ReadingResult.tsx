@@ -155,9 +155,9 @@ export function ReadingResult({ cards, category, spread }: ReadingResultProps) {
                 </Typography>
               </FlexBox>
               {cards.length > 1 && (
-                <Chip variant="outlined" size="xsmall" disableInteraction>
+                <ContentBadge color="neutral" size="small">
                   {config.positions[index]}
-                </Chip>
+                </ContentBadge>
               )}
             </FlexBox>
 
