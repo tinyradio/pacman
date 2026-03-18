@@ -93,7 +93,7 @@ export function CategorySelector({
             >
               {CATEGORY_ICONS[key]}
             </FlexBox>
-            <FlexBox flexDirection="column" gap="2px" alignItems="center">
+            <FlexBox flexDirection="column" gap="6px" alignItems="center">
               <Typography
                 variant="label1"
                 weight="bold"
