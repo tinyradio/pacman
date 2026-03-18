@@ -97,6 +97,7 @@ export function ReadingResult({ cards, category, spread }: ReadingResultProps) {
                   <Typography
                     variant="caption2"
                     color="semantic.label.alternative"
+                    sx={{ marginBottom: "4px" }}
                   >
                     {cardData?.name}
                   </Typography>
