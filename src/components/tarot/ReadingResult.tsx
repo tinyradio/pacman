@@ -31,7 +31,7 @@ export function ReadingResult({ cards, category, spread }: ReadingResultProps) {
           variant="outlined"
           size="small"
           disableInteraction
-          sx={(theme) => ({ backgroundColor: theme.semantic.background.normal.normal })}
+          sx={(theme) => ({ backgroundColor: theme.semantic.background.normal.normal, border: "none", outline: "none" })}
         >
           {config.label}
         </Chip>
@@ -39,7 +39,7 @@ export function ReadingResult({ cards, category, spread }: ReadingResultProps) {
           variant="outlined"
           size="small"
           disableInteraction
-          sx={(theme) => ({ backgroundColor: theme.semantic.background.normal.normal })}
+          sx={(theme) => ({ backgroundColor: theme.semantic.background.normal.normal, border: "none", outline: "none" })}
         >
           {categoryLabel.label}
         </Chip>
