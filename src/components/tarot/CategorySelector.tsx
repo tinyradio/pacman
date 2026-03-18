@@ -84,7 +84,7 @@ export function CategorySelector({
                 borderRadius: "12px",
                 backgroundColor: isSelected
                   ? theme.atomic.blue[95]
-                  : theme.semantic.fill.normal,
+                  : `rgba(255, 255, 255, ${theme.opacity[61]})`,
                 color: isSelected
                   ? theme.semantic.primary.normal
                   : theme.semantic.label.assistive,
