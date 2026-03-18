@@ -59,6 +59,8 @@ function ResultContent() {
             backgroundColor: theme.semantic.background.normal.normal,
             border: "none",
             outline: "none",
+            boxShadow: "none",
+            "& > div": { border: "none", outline: "none" },
           })}
         >
           다시 뽑기
@@ -75,6 +77,8 @@ function ResultContent() {
             backgroundColor: theme.semantic.background.normal.normal,
             border: "none",
             outline: "none",
+            boxShadow: "none",
+            "& > div": { border: "none", outline: "none" },
           })}
         >
           홈으로
