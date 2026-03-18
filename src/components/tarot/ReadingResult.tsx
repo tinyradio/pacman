@@ -31,7 +31,10 @@ export function ReadingResult({ cards, category, spread }: ReadingResultProps) {
           variant="solid"
           size="small"
           disableInteraction
-          sx={(theme) => ({ backgroundColor: theme.semantic.fill.alternative })}
+          sx={(theme) => ({
+            backgroundColor: theme.semantic.fill.alternative,
+            "& [class*='Interaction']": { backgroundColor: "white" },
+          })}
         >
           {config.label}
         </Chip>
@@ -39,7 +42,10 @@ export function ReadingResult({ cards, category, spread }: ReadingResultProps) {
           variant="solid"
           size="small"
           disableInteraction
-          sx={(theme) => ({ backgroundColor: theme.semantic.fill.alternative })}
+          sx={(theme) => ({
+            backgroundColor: theme.semantic.fill.alternative,
+            "& [class*='Interaction']": { backgroundColor: "white" },
+          })}
         >
           {categoryLabel.label}
         </Chip>
