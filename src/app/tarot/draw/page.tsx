@@ -134,7 +134,7 @@ function DrawContent() {
         <Typography
           variant="caption1"
           weight="medium"
-          color="semantic.label.assistive"
+          color={isComplete ? "semantic.label.alternative" : "semantic.label.assistive"}
           sx={{ textAlign: "center" }}
         >
           {isComplete
