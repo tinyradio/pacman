@@ -47,12 +47,10 @@ export function SpreadSelector({ selected, onSelect }: SpreadSelectorProps) {
               textAlign: "center",
               transition: "all 0.2s ease",
               "&:hover": {
-                outlineColor: theme.semantic.primary.normal,
-                boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
+                boxShadow: theme.semantic.elevation.shadow.normal.small,
               },
             })}
           >
-            {/* Check indicator */}
             {isSelected && (
               <FlexBox
                 sx={(theme) => ({
@@ -76,7 +74,7 @@ export function SpreadSelector({ selected, onSelect }: SpreadSelectorProps) {
                 height: "44px",
                 borderRadius: "12px",
                 backgroundColor: isSelected
-                  ? `color-mix(in srgb, ${theme.semantic.primary.normal} 10%, transparent)`
+                  ? theme.semantic.fill.normal
                   : theme.semantic.fill.normal,
                 color: isSelected
                   ? theme.semantic.primary.normal

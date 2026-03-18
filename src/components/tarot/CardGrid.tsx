@@ -31,7 +31,7 @@ export const CardGrid = memo(function CardGrid({
         padding: "16px",
         borderRadius: "16px",
         backgroundColor: theme.semantic.background.normal.normal,
-        outline: `1px solid ${theme.semantic.line.normal}`,
+        boxShadow: theme.semantic.elevation.shadow.normal.xsmall,
       })}
       role="grid"
       aria-label={`타로 카드 ${totalCards}장 중 ${selectedSet.size}/${maxSelections}장 선택됨`}
@@ -86,7 +86,7 @@ const CardGridItem = memo(function CardGridItem({
         border: "none",
         padding: 0,
         background: "none",
-        boxShadow: !isDisabled ? "0 1px 3px rgba(0,0,0,0.06)" : "none",
+        boxShadow: "none",
       }}
       aria-label={`카드 ${cardIndex + 1}번`}
       aria-selected={isSelected}

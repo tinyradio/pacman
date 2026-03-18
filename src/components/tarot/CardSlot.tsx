@@ -41,9 +41,7 @@ export function CardSlot({ index, label, filled, onClick }: CardSlotProps) {
           outline: filled
             ? `2px solid ${theme.semantic.primary.normal}`
             : `1.5px dashed ${theme.semantic.line.normal}`,
-          backgroundColor: filled
-            ? `color-mix(in srgb, ${theme.semantic.primary.normal} 3%, transparent)`
-            : theme.semantic.background.normal.normal,
+          backgroundColor: theme.semantic.background.normal.normal,
           cursor: filled ? "pointer" : "default",
           transition: "all 0.25s ease",
           overflow: "hidden",
@@ -51,7 +49,7 @@ export function CardSlot({ index, label, filled, onClick }: CardSlotProps) {
           ...(filled && {
             "&:hover": {
               transform: "scale(1.05)",
-              boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
+              boxShadow: theme.semantic.elevation.shadow.normal.small,
             },
           }),
         })}

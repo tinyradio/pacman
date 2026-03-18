@@ -6,7 +6,7 @@ import { FlexBox, Typography, Button } from "@wanteddev/wds";
 
 export default function TarotLandingPage() {
   return (
-    <FlexBox flexDirection="column" gap="32px">
+    <FlexBox flexDirection="column" gap="40px">
       {/* Hero */}
       <FlexBox
         flexDirection="column"
