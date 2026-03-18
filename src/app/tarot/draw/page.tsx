@@ -97,10 +97,10 @@ function DrawContent() {
       <FlexBox flexDirection="column" gap="24px" sx={{ paddingBottom: "80px" }}>
         {/* Context chips */}
         <FlexBox gap="8px" alignItems="center">
-          <Chip variant="solid" size="small" disableInteraction sx={{ backgroundColor: "white", "& [class*='bi8qpk'], & [class*='Interaction'], & > div:first-of-type": { display: "none !important" } }}>
+          <Chip variant="solid" size="small" disableInteraction sx={{ backgroundColor: "white", cursor: "default", pointerEvents: "none", "& *": { display: "none" }, "& > span": { display: "inline" } }}>
             {config.label}
           </Chip>
-          <Chip variant="solid" size="small" disableInteraction sx={{ backgroundColor: "white", "& [class*='bi8qpk'], & [class*='Interaction'], & > div:first-of-type": { display: "none !important" } }}>
+          <Chip variant="solid" size="small" disableInteraction sx={{ backgroundColor: "white", cursor: "default", pointerEvents: "none", "& *": { display: "none" }, "& > span": { display: "inline" } }}>
             {categoryLabel.label}
           </Chip>
           <FlexBox flex="1" />

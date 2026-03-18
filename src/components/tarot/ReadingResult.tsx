@@ -33,7 +33,10 @@ export function ReadingResult({ cards, category, spread }: ReadingResultProps) {
           disableInteraction
           sx={{
             backgroundColor: "white",
-            "& [class*='bi8qpk'], & [class*='Interaction'], & > div:first-of-type": { display: "none !important" },
+            cursor: "default",
+            pointerEvents: "none",
+            "& *": { display: "none" },
+            "& > span": { display: "inline" },
           }}
         >
           {config.label}
@@ -44,7 +47,10 @@ export function ReadingResult({ cards, category, spread }: ReadingResultProps) {
           disableInteraction
           sx={{
             backgroundColor: "white",
-            "& [class*='bi8qpk'], & [class*='Interaction'], & > div:first-of-type": { display: "none !important" },
+            cursor: "default",
+            pointerEvents: "none",
+            "& *": { display: "none" },
+            "& > span": { display: "inline" },
           }}
         >
           {categoryLabel.label}
