@@ -33,7 +33,7 @@ export function ReadingResult({ cards, category, spread }: ReadingResultProps) {
           disableInteraction
           sx={(theme) => ({
             backgroundColor: theme.semantic.fill.alternative,
-            "& [class*='Interaction']": { backgroundColor: "white" },
+            "& > div": { backgroundColor: "transparent !important" },
           })}
         >
           {config.label}
@@ -44,7 +44,7 @@ export function ReadingResult({ cards, category, spread }: ReadingResultProps) {
           disableInteraction
           sx={(theme) => ({
             backgroundColor: theme.semantic.fill.alternative,
-            "& [class*='Interaction']": { backgroundColor: "white" },
+            "& > div": { backgroundColor: "transparent !important" },
           })}
         >
           {categoryLabel.label}
