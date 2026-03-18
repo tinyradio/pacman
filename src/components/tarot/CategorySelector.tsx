@@ -81,7 +81,7 @@ export function CategorySelector({
                 height: "44px",
                 borderRadius: "12px",
                 backgroundColor: isSelected
-                  ? theme.semantic.fill.normal
+                  ? theme.semantic.primary.alternative
                   : theme.semantic.fill.normal,
                 color: isSelected
                   ? theme.semantic.primary.normal
