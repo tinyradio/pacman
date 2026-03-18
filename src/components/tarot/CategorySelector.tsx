@@ -97,7 +97,7 @@ export function CategorySelector({
               <Typography
                 variant="label1"
                 weight="bold"
-                color={isSelected ? "semantic.label.normal" : "semantic.label.alternative"}
+                color={isSelected ? "semantic.primary.normal" : "semantic.label.alternative"}
               >
                 {config.label}
               </Typography>
