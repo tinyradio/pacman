@@ -50,13 +50,15 @@ function ResultContent() {
         <Button
           as={Link}
           href="/tarot/select"
-          variant="text"
+          variant="outlined"
           color="assistive"
           size="large"
           fullWidth
           leadingContent={<IconRefresh />}
           sx={(theme) => ({
             backgroundColor: theme.semantic.background.normal.normal,
+            border: "none",
+            outline: "none",
           })}
         >
           다시 뽑기
@@ -64,13 +66,15 @@ function ResultContent() {
         <Button
           as={Link}
           href="/tarot"
-          variant="text"
+          variant="outlined"
           color="assistive"
           size="large"
           fullWidth
           leadingContent={<IconHome />}
           sx={(theme) => ({
             backgroundColor: theme.semantic.background.normal.normal,
+            border: "none",
+            outline: "none",
           })}
         >
           홈으로

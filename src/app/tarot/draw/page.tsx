@@ -35,7 +35,11 @@ function DrawContent() {
   const isValid = isValidSpread(spreadParam) && isValidCategory(categoryParam);
 
   const [selectedCards, setSelectedCards] = useState<DrawnCard[]>([]);
-  const [shuffledOrder] = useState(() => shuffleArray([...DEFAULT_ORDER]));
+  const [shuffledOrder, setShuffledOrder] = useState<number[]>(DEFAULT_ORDER);
+
+  useEffect(() => {
+    setShuffledOrder(shuffleArray([...DEFAULT_ORDER]));
+  }, []);
 
   const inlineCtaRef = useRef<HTMLDivElement>(null);
   const [showFixedCta, setShowFixedCta] = useState(false);
