@@ -73,7 +73,7 @@ export function ReadingResult({ cards, category, spread }: ReadingResultProps) {
                   <Typography
                     variant="caption2"
                     weight="bold"
-                    color="semantic.label.assistive"
+                    color="semantic.label.alternative"
                     sx={{ letterSpacing: "0.5px" }}
                   >
                     {config.positions[index]}
