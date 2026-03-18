@@ -43,7 +43,7 @@ export function SpreadSelector({ selected, onSelect }: SpreadSelectorProps) {
               borderRadius: "16px",
               outline: isSelected
                 ? `2px solid ${theme.semantic.primary.normal}`
-                : `1px solid ${theme.semantic.line.normal}`,
+                : "none",
               backgroundColor: theme.semantic.background.normal.normal,
               cursor: "pointer",
               textAlign: "center",
