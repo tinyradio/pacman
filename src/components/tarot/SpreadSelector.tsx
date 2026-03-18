@@ -42,7 +42,9 @@ export function SpreadSelector({ selected, onSelect }: SpreadSelectorProps) {
               padding: "24px 16px 20px",
               borderRadius: "16px",
               outline: "none",
-              backgroundColor: theme.semantic.background.normal.normal,
+              backgroundColor: isSelected
+                ? theme.semantic.background.normal.normal
+                : theme.semantic.background.normal.alternative,
               cursor: "pointer",
               textAlign: "center",
               transition: "all 0.2s ease",

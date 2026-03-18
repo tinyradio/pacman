@@ -50,7 +50,9 @@ export function CategorySelector({
               padding: "24px 12px 20px",
               borderRadius: "16px",
               outline: "none",
-              backgroundColor: theme.semantic.background.normal.normal,
+              backgroundColor: isSelected
+                ? theme.semantic.background.normal.normal
+                : theme.semantic.background.normal.alternative,
               cursor: "pointer",
               transition: "all 0.2s ease",
               "&:hover": {
