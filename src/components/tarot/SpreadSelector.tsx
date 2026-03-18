@@ -98,7 +98,7 @@ export function SpreadSelector({ selected, onSelect }: SpreadSelectorProps) {
               </Typography>
               <Typography
                 variant="caption1"
-                color="semantic.label.assistive"
+                color={isSelected ? "semantic.label.alternative" : "semantic.label.assistive"}
                 sx={{ lineHeight: "1.4" }}
               >
                 {spread.description}

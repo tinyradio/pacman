@@ -103,7 +103,7 @@ export function CategorySelector({
               >
                 {config.label}
               </Typography>
-              <Typography variant="caption1" color="semantic.label.assistive">
+              <Typography variant="caption1" color={isSelected ? "semantic.label.alternative" : "semantic.label.assistive"}>
                 {config.description}
               </Typography>
             </FlexBox>
