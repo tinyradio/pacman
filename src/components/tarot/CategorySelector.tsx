@@ -52,7 +52,7 @@ export function CategorySelector({
               outline: "none",
               backgroundColor: isSelected
                 ? theme.semantic.background.normal.normal
-                : `rgba(255, 255, 255, ${theme.opacity[74]})`,
+                : `rgba(255, 255, 255, ${theme.opacity[61]})`,
               cursor: "pointer",
               transition: "all 0.2s ease",
               "&:hover": {
