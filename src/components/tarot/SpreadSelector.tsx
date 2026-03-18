@@ -41,9 +41,7 @@ export function SpreadSelector({ selected, onSelect }: SpreadSelectorProps) {
               position: "relative",
               padding: "24px 16px 20px",
               borderRadius: "16px",
-              outline: isSelected
-                ? `2px solid ${theme.semantic.primary.normal}`
-                : "none",
+              outline: "none",
               backgroundColor: theme.semantic.background.normal.normal,
               cursor: "pointer",
               textAlign: "center",

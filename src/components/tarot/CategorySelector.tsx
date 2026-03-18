@@ -49,9 +49,7 @@ export function CategorySelector({
               position: "relative",
               padding: "24px 12px 20px",
               borderRadius: "16px",
-              outline: isSelected
-                ? `2px solid ${theme.semantic.primary.normal}`
-                : "none",
+              outline: "none",
               backgroundColor: theme.semantic.background.normal.normal,
               cursor: "pointer",
               transition: "all 0.2s ease",
