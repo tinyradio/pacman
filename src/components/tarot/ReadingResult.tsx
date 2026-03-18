@@ -96,7 +96,7 @@ export function ReadingResult({ cards, category, spread }: ReadingResultProps) {
                   </Typography>
                   <Typography
                     variant="caption2"
-                    color="semantic.label.disable"
+                    color="semantic.label.alternative"
                   >
                     {cardData?.name}
                   </Typography>
@@ -147,7 +147,7 @@ export function ReadingResult({ cards, category, spread }: ReadingResultProps) {
                 </Typography>
                 <Typography
                   variant="caption1"
-                  color="semantic.label.disable"
+                  color="semantic.label.alternative"
                 >
                   {cardData.name} ·{" "}
                   {card.orientation === "reversed" ? "역방향" : "정방향"}
