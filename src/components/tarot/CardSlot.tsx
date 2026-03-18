@@ -15,7 +15,7 @@ export function CardSlot({ index, label, filled, onClick }: CardSlotProps) {
     <FlexBox flexDirection="column" alignItems="center" gap="8px">
       <Typography
         variant="caption2"
-        weight="medium"
+        weight="bold"
         color={filled ? "semantic.primary.normal" : "semantic.label.assistive"}
       >
         {label}
