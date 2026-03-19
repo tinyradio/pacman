@@ -106,7 +106,7 @@ export default function SelectPage() {
             width: "100%",
             maxWidth: "560px",
             margin: "0 auto",
-            padding: "10px 20px 0",
+            padding: "10px 0 0",
           },
         }}
       >
