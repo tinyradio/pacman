@@ -15,7 +15,7 @@ function CustomToast({ message, visible }: { message: string; visible: boolean }
         transform: `translateX(-50%) translateY(${visible ? "0" : "20px"})`,
         opacity: visible ? 1 : 0,
         transition: "all 0.3s ease",
-        backgroundColor: "rgba(55, 56, 60, 0.85)",
+        backgroundColor: "rgba(27, 28, 30, 0.52)",
         color: "white",
         padding: "12px 24px",
         borderRadius: "12px",
