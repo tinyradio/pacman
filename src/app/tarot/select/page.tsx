@@ -16,8 +16,8 @@ import type { Spread, Category } from "@/lib/tarot/types";
 
 export default function SelectPage() {
   const router = useRouter();
-  const [spread, setSpread] = useState<Spread | null>(null);
-  const [category, setCategory] = useState<Category | null>(null);
+  const [spread, setSpread] = useState<Spread | null>("one");
+  const [category, setCategory] = useState<Category | null>("career");
 
   const canProceed = spread && category;
 
