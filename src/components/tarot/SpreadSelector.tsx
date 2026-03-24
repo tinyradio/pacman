@@ -84,7 +84,7 @@ export function SpreadSelector({ selected, onSelect }: SpreadSelectorProps) {
                 transition: "all 0.2s ease",
               })}
             >
-              <Typography variant="headline2" weight="bold" sx={{ fontSize: "16px" }}>
+              <Typography variant="headline2" weight="bold" sx={{ fontSize: "18px" }}>
                 {SPREAD_NUMBERS[spread.type]}
               </Typography>
             </FlexBox>
