@@ -7,3 +7,9 @@
     "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji",
     "Segoe UI Symbol", sans-serif;
 }
+
+/* Toast text center align */
+#wds-region-manager [role="status"] {
+  text-align: center;
+  justify-content: center;
+}
