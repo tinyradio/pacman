@@ -41,7 +41,7 @@ export function SpreadSelector({ selected, onSelect }: SpreadSelectorProps) {
               borderRadius: "16px",
               aspectRatio: "6/5",
               [`@media (max-width: ${theme.breakpoint.sm})`]: {
-                aspectRatio: "5/6",
+                aspectRatio: "1",
               },
               justifyContent: "center",
               outline: "none",
