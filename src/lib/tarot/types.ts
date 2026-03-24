@@ -61,7 +61,7 @@ export const SPREAD_CONFIGS: Record<Spread, SpreadConfig> = {
 };
 
 export const CATEGORY_LABELS: Record<Category, { label: string; description: string }> = {
-  career: { label: "직장", description: "직장에 대한 운세" },
-  wealth: { label: "재물", description: "금전에 대한 운세" },
-  love: { label: "연애", description: "사랑에 대한 운세" },
+  career: { label: "직장", description: "나의 직장운은?" },
+  wealth: { label: "재물", description: "나의 금전운은?" },
+  love: { label: "연애", description: "나의 연애운은?" },
 };
