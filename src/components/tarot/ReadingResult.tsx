@@ -96,6 +96,7 @@ export function ReadingResult({ cards, category, spread }: ReadingResultProps) {
                   orientation={card.orientation}
                   delay={index * 800}
                   cardNameKo={cardData?.nameKo ?? ""}
+                  size={cards.length > 1 ? "small" : "default"}
                 />
                 <FlexBox
                   flexDirection="column"

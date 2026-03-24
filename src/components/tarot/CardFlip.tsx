@@ -9,15 +9,23 @@ interface CardFlipProps {
   orientation: Orientation;
   delay?: number;
   cardNameKo: string;
+  size?: "default" | "small";
 }
+
+const SIZES = {
+  default: { width: 108, height: 162 },
+  small: { width: 88, height: 132 },
+};
 
 export function CardFlip({
   cardId,
   orientation,
   delay = 0,
   cardNameKo,
+  size = "default",
 }: CardFlipProps) {
   const [flipped, setFlipped] = useState(false);
+  const { width, height } = SIZES[size];
 
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia(
@@ -36,8 +44,8 @@ export function CardFlip({
     <div
       style={{
         position: "relative",
-        width: "108px",
-        height: "162px",
+        width: `${width}px`,
+        height: `${height}px`,
         perspective: "800px",
         borderRadius: flipped ? "12px" : "0px",
         boxShadow: flipped ? "0px 0px 10px rgba(0,0,0,0.1)" : "none",
