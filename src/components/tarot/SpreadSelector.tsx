@@ -76,7 +76,7 @@ export function SpreadSelector({ selected, onSelect }: SpreadSelectorProps) {
               sx={(theme) => ({
                 width: "40px",
                 height: "60px",
-                borderRadius: "12px",
+                borderRadius: "8px",
                 backgroundColor: isSelected
                   ? theme.atomic.blue[95]
                   : theme.atomic.coolNeutral[98],
