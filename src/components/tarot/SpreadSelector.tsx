@@ -1,9 +1,6 @@
 "use client";
 
 import { FlexBox, Typography } from "@wanteddev/wds";
-import {
-  IconCircleCheckFill,
-} from "@wanteddev/wds-icon";
 import type { Spread } from "@/lib/tarot/types";
 import { SPREAD_CONFIGS } from "@/lib/tarot/types";
 
@@ -56,21 +53,6 @@ export function SpreadSelector({ selected, onSelect }: SpreadSelectorProps) {
               },
             })}
           >
-            {isSelected && (
-              <FlexBox
-                sx={(theme) => ({
-                  position: "absolute",
-                  top: "10px",
-                  right: "10px",
-                  "& svg": {
-                    color: `${theme.semantic.primary.normal} !important`,
-                  },
-                })}
-              >
-                <IconCircleCheckFill sx={{ fontSize: "20px" }} />
-              </FlexBox>
-            )}
-
             <FlexBox
               alignItems="center"
               justifyContent="center"

@@ -5,7 +5,6 @@ import {
   IconHeart,
   IconCoins,
   IconBusinessBag,
-  IconCircleCheckFill,
 } from "@wanteddev/wds-icon";
 import type { Category } from "@/lib/tarot/types";
 import { CATEGORY_LABELS } from "@/lib/tarot/types";
@@ -62,21 +61,6 @@ export function CategorySelector({
               },
             })}
           >
-            {isSelected && (
-              <FlexBox
-                sx={(theme) => ({
-                  position: "absolute",
-                  top: "10px",
-                  right: "10px",
-                  "& svg": {
-                    color: `${theme.semantic.primary.normal} !important`,
-                  },
-                })}
-              >
-                <IconCircleCheckFill sx={{ fontSize: "20px" }} />
-              </FlexBox>
-            )}
-
             <FlexBox
               alignItems="center"
               justifyContent="center"
