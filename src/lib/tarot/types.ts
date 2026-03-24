@@ -54,14 +54,14 @@ export const SPREAD_CONFIGS: Record<Spread, SpreadConfig> = {
   three: {
     type: "three",
     label: "쓰리카드",
-    description: "과거, 현재, 미래를 보는 심층 리딩",
+    description: "과거, 현재, 미래를 보는 운세",
     cardCount: 3,
     positions: ["과거", "현재", "미래"],
   },
 };
 
 export const CATEGORY_LABELS: Record<Category, { label: string; description: string }> = {
-  career: { label: "직장", description: "커리어에 대한 운세" },
+  career: { label: "직장", description: "직장에 대한 운세" },
   wealth: { label: "재물", description: "금전에 대한 운세" },
   love: { label: "연애", description: "사랑에 대한 운세" },
 };
