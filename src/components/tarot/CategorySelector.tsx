@@ -83,7 +83,7 @@ export function CategorySelector({
               sx={(theme) => ({
                 width: "44px",
                 height: "44px",
-                borderRadius: "12px",
+                borderRadius: "8px",
                 backgroundColor: isSelected
                   ? theme.atomic.blue[95]
                   : theme.atomic.coolNeutral[98],
