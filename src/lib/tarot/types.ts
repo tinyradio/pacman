@@ -47,7 +47,7 @@ export const SPREAD_CONFIGS: Record<Spread, SpreadConfig> = {
   one: {
     type: "one",
     label: "원카드",
-    description: "오늘의 한 장으로 보는 운세",
+    description: "한 장으로 보는 운세",
     cardCount: 1,
     positions: ["현재"],
   },
