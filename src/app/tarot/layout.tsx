@@ -1,7 +1,8 @@
 "use client";
 
+import { useState, useEffect, useCallback } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { FlexBox, IconButton, useToast } from "@wanteddev/wds";
+import { FlexBox, IconButton } from "@wanteddev/wds";
 import { IconChevronLeft, IconShare } from "@wanteddev/wds-icon";
 import { StepIndicatorCompact } from "@/components/tarot/StepIndicator";
 
@@ -14,6 +15,31 @@ function getStepFromPathname(pathname: string): number {
   return -1;
 }
 
+function CustomToast({ message, visible }: { message: string; visible: boolean }) {
+  return (
+    <div
+      style={{
+        position: "fixed",
+        bottom: "40px",
+        left: "50%",
+        transform: `translateX(-50%) translateY(${visible ? "0" : "20px"})`,
+        opacity: visible ? 1 : 0,
+        transition: "all 0.3s ease",
+        backgroundColor: "rgba(27, 28, 30, 0.52)",
+        color: "white",
+        padding: "12px 24px",
+        borderRadius: "12px",
+        fontSize: "14px",
+        fontWeight: 500,
+        textAlign: "center",
+        zIndex: 9999,
+        pointerEvents: "none",
+      }}
+    >
+      {message}
+    </div>
+  );
+}
 
 export default function TarotLayout({
   children,
@@ -24,7 +50,20 @@ export default function TarotLayout({
   const router = useRouter();
   const isHome = pathname === "/tarot";
   const currentStep = getStepFromPathname(pathname);
-  const toast = useToast();
+
+  const [toastMessage, setToastMessage] = useState("");
+  const [toastVisible, setToastVisible] = useState(false);
+
+  const showToast = useCallback((msg: string) => {
+    setToastMessage(msg);
+    setToastVisible(true);
+  }, []);
+
+  useEffect(() => {
+    if (!toastVisible) return;
+    const timeout = setTimeout(() => setToastVisible(false), 2000);
+    return () => clearTimeout(timeout);
+  }, [toastVisible]);
 
   async function handleShare() {
     const url = `${window.location.origin}/tarot`;
@@ -41,9 +80,9 @@ export default function TarotLayout({
         document.execCommand("copy");
         document.body.removeChild(textarea);
       }
-      toast({ content: "링크가 복사되었습니다", duration: 2000 });
+      showToast("링크가 복사되었습니다");
     } catch {
-      toast({ content: "링크 복사에 실패했습니다", duration: 2000 });
+      showToast("링크 복사에 실패했습니다");
     }
   }
 
@@ -122,6 +161,8 @@ export default function TarotLayout({
       >
         {children}
       </FlexBox>
+
+      <CustomToast message={toastMessage} visible={toastVisible} />
     </FlexBox>
   );
 }
