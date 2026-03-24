@@ -39,7 +39,7 @@ export function SpreadSelector({ selected, onSelect }: SpreadSelectorProps) {
               position: "relative",
               padding: "24px 16px 20px",
               borderRadius: "16px",
-              aspectRatio: "6/4",
+              aspectRatio: "6/5",
               justifyContent: "center",
               outline: "none",
               backgroundColor: isSelected
