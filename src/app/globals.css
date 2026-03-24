@@ -9,7 +9,11 @@
 }
 
 /* Toast text center align */
-#wds-region-manager [role="status"] {
-  text-align: center;
-  justify-content: center;
+#wds-region-manager,
+#wds-region-manager *,
+#wds-region-manager [role="status"],
+#wds-region-manager-bottom,
+#wds-region-manager-bottom * {
+  text-align: center !important;
+  justify-content: center !important;
 }
