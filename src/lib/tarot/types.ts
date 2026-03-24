@@ -54,7 +54,7 @@ export const SPREAD_CONFIGS: Record<Spread, SpreadConfig> = {
   three: {
     type: "three",
     label: "쓰리카드",
-    description: "과거, 현재, 미래를 보는 운세",
+    description: "과거, 현재, 미래의 운세",
     cardCount: 3,
     positions: ["과거", "현재", "미래"],
   },
