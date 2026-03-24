@@ -35,6 +35,7 @@ export function StepIndicatorCompact({ currentStep, steps }: StepIndicatorProps)
         weight="bold"
         sx={{
           display: "none",
+          fontSize: "16px",
           "@media (max-width: 560px)": {
             display: "block",
             textAlign: "center",
