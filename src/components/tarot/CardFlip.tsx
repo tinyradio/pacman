@@ -79,7 +79,7 @@ export function CardFlip({
           }}
         >
           <Image
-            src="/cards/back.png"
+            src="/cards/back.webp"
             alt="카드 뒷면"
             fill
             style={{ objectFit: "cover" }}
@@ -105,7 +105,7 @@ export function CardFlip({
             }}
           >
             <Image
-              src={`/cards/major/${cardId}.png`}
+              src={`/cards/major/${cardId}.webp`}
               alt={cardNameKo}
               fill
               style={{ objectFit: "cover" }}

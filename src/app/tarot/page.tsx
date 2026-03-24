@@ -82,7 +82,7 @@ export default function TarotLandingPage() {
           alignItems="center"
         >
           <Image
-            src="/images/hero-cards.png"
+            src="/images/hero-cards.webp"
             alt="타로 카드"
             width={334}
             height={280}

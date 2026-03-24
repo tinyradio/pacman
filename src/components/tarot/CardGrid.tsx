@@ -92,7 +92,7 @@ const CardGridItem = memo(function CardGridItem({
       aria-selected={isSelected}
     >
       <Image
-        src="/cards/back.png"
+        src="/cards/back.webp"
         alt=""
         fill
         style={{ objectFit: "cover" }}

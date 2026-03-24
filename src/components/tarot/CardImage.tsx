@@ -19,7 +19,7 @@ export function CardImage({
   if (!revealed) {
     return (
       <Image
-        src="/cards/back.png"
+        src="/cards/back.webp"
         alt="타로 카드 뒷면"
         width={240}
         height={360}
@@ -32,7 +32,7 @@ export function CardImage({
   return (
     <div className={`${orientation === "reversed" ? "rotate-180" : ""} ${className}`}>
       <Image
-        src={`/cards/major/${cardId}.png`}
+        src={`/cards/major/${cardId}.webp`}
         alt={`타로 카드 ${cardId}`}
         width={240}
         height={360}
