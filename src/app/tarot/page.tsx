@@ -80,6 +80,7 @@ export default function TarotLandingPage() {
         <FlexBox
           justifyContent="center"
           alignItems="center"
+          sx={{ paddingTop: "20px" }}
         >
           <Image
             src="/images/hero-cards.webp"
