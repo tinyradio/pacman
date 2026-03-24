@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { FlexBox, Typography, Button, useToast } from "@wanteddev/wds";
-import { IconShare } from "@wanteddev/wds-icon";
+
 
 export default function TarotLandingPage() {
   const toast = useToast();
@@ -100,7 +100,7 @@ export default function TarotLandingPage() {
           color="assistive"
           size="large"
           fullWidth
-          leadingContent={<IconShare />}
+
           onClick={handleShare}
         >
           공유하기
