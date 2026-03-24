@@ -49,7 +49,7 @@ export function CategorySelector({
               position: "relative",
               padding: "24px 12px 20px",
               borderRadius: "16px",
-              aspectRatio: "4/3",
+              aspectRatio: "1",
               justifyContent: "center",
               outline: "none",
               backgroundColor: isSelected
