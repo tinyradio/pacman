@@ -40,6 +40,9 @@ export function SpreadSelector({ selected, onSelect }: SpreadSelectorProps) {
               padding: "24px 16px 20px",
               borderRadius: "16px",
               aspectRatio: "6/5",
+              [`@media (max-width: ${theme.breakpoint.sm})`]: {
+                aspectRatio: "1",
+              },
               justifyContent: "center",
               outline: "none",
               backgroundColor: isSelected
