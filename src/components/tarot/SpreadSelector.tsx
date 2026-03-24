@@ -8,8 +8,8 @@ import type { Spread } from "@/lib/tarot/types";
 import { SPREAD_CONFIGS } from "@/lib/tarot/types";
 
 const SPREAD_NUMBERS: Record<Spread, string> = {
-  one: "01",
-  three: "03",
+  one: "1",
+  three: "3",
 };
 
 interface SpreadSelectorProps {
