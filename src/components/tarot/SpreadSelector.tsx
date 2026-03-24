@@ -72,7 +72,7 @@ export function SpreadSelector({ selected, onSelect }: SpreadSelectorProps) {
               alignItems="center"
               justifyContent="center"
               sx={(theme) => ({
-                width: "40px",
+                width: "44px",
                 height: "60px",
                 borderRadius: "8px",
                 backgroundColor: isSelected
