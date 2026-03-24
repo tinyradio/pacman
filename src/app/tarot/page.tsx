@@ -83,7 +83,7 @@ export default function TarotLandingPage() {
         flexDirection="column"
         gap="12px"
         alignItems="center"
-        sx={{ maxWidth: "320px", width: "100%", alignSelf: "center", marginTop: "16px" }}
+        sx={{ maxWidth: "320px", width: "100%", alignSelf: "center", marginTop: "16px", paddingBottom: "40px" }}
       >
         <Button
           as={Link}
