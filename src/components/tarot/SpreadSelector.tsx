@@ -75,8 +75,8 @@ export function SpreadSelector({ selected, onSelect }: SpreadSelectorProps) {
               alignItems="center"
               justifyContent="center"
               sx={(theme) => ({
-                width: "40px",
-                height: "60px",
+                width: "44px",
+                height: "66px",
                 borderRadius: "8px",
                 backgroundColor: isSelected
                   ? theme.atomic.blue[95]
