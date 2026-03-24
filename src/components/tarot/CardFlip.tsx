@@ -64,11 +64,9 @@ export function CardFlip({
           style={{
             position: "absolute",
             inset: 0,
-            borderRadius: "10px",
+            borderRadius: "12px",
             overflow: "hidden",
             backfaceVisibility: "hidden",
-            border: "4px solid white",
-            boxShadow: "0px 4px 4px rgba(0,0,0,0.25)",
           }}
         >
           <Image
@@ -83,12 +81,10 @@ export function CardFlip({
           style={{
             position: "absolute",
             inset: 0,
-            borderRadius: "10px",
+            borderRadius: "12px",
             overflow: "hidden",
             backfaceVisibility: "hidden",
             transform: "rotateY(180deg)",
-            border: "4px solid white",
-            boxShadow: "0px 4px 4px rgba(0,0,0,0.25)",
           }}
         >
           <div
