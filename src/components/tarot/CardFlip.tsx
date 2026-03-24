@@ -40,7 +40,8 @@ export function CardFlip({
         height: "162px",
         perspective: "800px",
         borderRadius: "12px",
-        boxShadow: "0px 0px 10px rgba(0,0,0,0.1)",
+        boxShadow: flipped ? "0px 0px 10px rgba(0,0,0,0.1)" : "none",
+        transition: "box-shadow 0.3s ease",
       }}
     >
       <div
