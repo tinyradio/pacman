@@ -2,16 +2,14 @@
 
 import { FlexBox, Typography } from "@wanteddev/wds";
 import {
-  IconSparkle,
-  IconStar,
   IconCircleCheckFill,
 } from "@wanteddev/wds-icon";
 import type { Spread } from "@/lib/tarot/types";
 import { SPREAD_CONFIGS } from "@/lib/tarot/types";
 
-const SPREAD_ICONS: Record<Spread, React.ReactNode> = {
-  one: <IconSparkle sx={{ fontSize: "20px" }} />,
-  three: <IconStar sx={{ fontSize: "20px" }} />,
+const SPREAD_NUMBERS: Record<Spread, string> = {
+  one: "1",
+  three: "3",
 };
 
 interface SpreadSelectorProps {
@@ -86,7 +84,9 @@ export function SpreadSelector({ selected, onSelect }: SpreadSelectorProps) {
                 transition: "all 0.2s ease",
               })}
             >
-              {SPREAD_ICONS[spread.type]}
+              <Typography variant="headline2" weight="bold" sx={{ fontSize: "20px" }}>
+                {SPREAD_NUMBERS[spread.type]}
+              </Typography>
             </FlexBox>
             <FlexBox flexDirection="column" gap="4px" alignItems="center">
               <Typography
