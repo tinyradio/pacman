@@ -5,7 +5,7 @@ import { FlexBox, IconButton, useToast } from "@wanteddev/wds";
 import { IconChevronLeft, IconShare } from "@wanteddev/wds-icon";
 import { StepIndicatorCompact } from "@/components/tarot/StepIndicator";
 
-const STEPS = ["리딩 선택", "카드 선택", "결과"];
+const STEPS = ["리딩 선택", "카드 선택", "결과 보기"];
 
 function getStepFromPathname(pathname: string): number {
   if (pathname.includes("/result")) return 2;
