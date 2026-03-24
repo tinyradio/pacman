@@ -86,7 +86,7 @@ const CardGridItem = memo(function CardGridItem({
         border: "none",
         padding: 0,
         background: "none",
-        boxShadow: "none",
+        boxShadow: isDisabled ? "none" : "0px 0px 8px rgba(0,0,0,0.1)",
       }}
       aria-label={`카드 ${cardIndex + 1}번`}
       aria-selected={isSelected}
