@@ -39,9 +39,9 @@ export function CardFlip({
         width: "108px",
         height: "162px",
         perspective: "800px",
-        borderRadius: "12px",
+        borderRadius: flipped ? "12px" : "0px",
         boxShadow: flipped ? "0px 0px 10px rgba(0,0,0,0.1)" : "none",
-        transition: "box-shadow 0.3s ease",
+        transition: "box-shadow 0.5s ease 0.4s, border-radius 0.5s ease 0.4s",
       }}
     >
       <div
