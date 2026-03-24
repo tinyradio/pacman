@@ -8,8 +8,8 @@ import type { Spread } from "@/lib/tarot/types";
 import { SPREAD_CONFIGS } from "@/lib/tarot/types";
 
 const SPREAD_NUMBERS: Record<Spread, string> = {
-  one: "1",
-  three: "3",
+  one: "01",
+  three: "03",
 };
 
 interface SpreadSelectorProps {
@@ -87,7 +87,7 @@ export function SpreadSelector({ selected, onSelect }: SpreadSelectorProps) {
                 transition: "all 0.2s ease",
               })}
             >
-              <Typography variant="headline2" weight="bold" sx={{ fontSize: "16px" }}>
+              <Typography variant="headline2" weight="bold" sx={{ fontSize: "14px" }}>
                 {SPREAD_NUMBERS[spread.type]}
               </Typography>
             </FlexBox>
