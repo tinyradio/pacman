@@ -30,7 +30,13 @@ export default function TarotLandingPage() {
   }
 
   return (
-    <FlexBox flexDirection="column" gap="16px">
+    <FlexBox
+      flexDirection="column"
+      gap="16px"
+      alignItems="center"
+      justifyContent="center"
+      sx={{ minHeight: "calc(100dvh - 88px)" }}
+    >
       {/* Card fan illustration */}
       <FlexBox
         justifyContent="center"
