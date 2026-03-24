@@ -35,68 +35,16 @@ export default function TarotLandingPage() {
       <FlexBox
         justifyContent="center"
         alignItems="center"
-        sx={{
-          position: "relative",
-          width: "100%",
-          height: "260px",
-          paddingTop: "24px",
-        }}
+        sx={{ paddingTop: "24px" }}
       >
-        {/* Left card - rotated left */}
-        <div
-          style={{
-            position: "absolute",
-            width: "125px",
-            height: "187px",
-            borderRadius: "12px",
-            overflow: "hidden",
-            boxShadow: "0px 0px 4px rgba(0,0,0,0.1)",
-            backgroundColor: "white",
-            transform: "rotate(-6.7deg) translateX(-80px)",
-            zIndex: 1,
-          }}
-        >
-          <div style={{ margin: "7px", borderRadius: "6px", overflow: "hidden", width: "111px", height: "173px", position: "relative" }}>
-            <Image src="/cards/major/2.png" alt="" fill style={{ objectFit: "cover" }} />
-          </div>
-        </div>
-
-        {/* Center card */}
-        <div
-          style={{
-            position: "relative",
-            width: "125px",
-            height: "187px",
-            borderRadius: "12px",
-            overflow: "hidden",
-            boxShadow: "0px 0px 4px rgba(0,0,0,0.1)",
-            backgroundColor: "white",
-            zIndex: 2,
-          }}
-        >
-          <div style={{ margin: "7px", borderRadius: "6px", overflow: "hidden", width: "111px", height: "173px", position: "relative" }}>
-            <Image src="/cards/major/1.png" alt="" fill style={{ objectFit: "cover" }} />
-          </div>
-        </div>
-
-        {/* Right card - rotated right */}
-        <div
-          style={{
-            position: "absolute",
-            width: "125px",
-            height: "187px",
-            borderRadius: "12px",
-            overflow: "hidden",
-            boxShadow: "0px 0px 4px rgba(0,0,0,0.1)",
-            backgroundColor: "white",
-            transform: "rotate(7.3deg) translateX(80px)",
-            zIndex: 1,
-          }}
-        >
-          <div style={{ margin: "7px", borderRadius: "6px", overflow: "hidden", width: "111px", height: "173px", position: "relative" }}>
-            <Image src="/cards/major/10.png" alt="" fill style={{ objectFit: "cover" }} />
-          </div>
-        </div>
+        <Image
+          src="/images/hero-cards.png"
+          alt="타로 카드"
+          width={334}
+          height={280}
+          style={{ objectFit: "contain" }}
+          priority
+        />
       </FlexBox>
 
       {/* Title & Description */}
