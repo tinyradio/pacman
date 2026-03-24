@@ -41,7 +41,7 @@ export default function TarotLandingPage() {
       <FlexBox
         justifyContent="center"
         alignItems="center"
-        sx={{ paddingTop: "24px" }}
+        sx={{ paddingTop: "0px" }}
       >
         <Image
           src="/images/hero-cards.png"
@@ -83,7 +83,7 @@ export default function TarotLandingPage() {
         flexDirection="column"
         gap="12px"
         alignItems="center"
-        sx={{ maxWidth: "320px", width: "100%", alignSelf: "center" }}
+        sx={{ maxWidth: "320px", width: "100%", alignSelf: "center", marginTop: "16px" }}
       >
         <Button
           as={Link}
