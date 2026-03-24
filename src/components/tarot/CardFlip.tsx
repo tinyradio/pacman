@@ -96,7 +96,7 @@ export function CardFlip({
             }}
           >
             <Image
-              src={`/cards/major/${cardId}.svg`}
+              src={`/cards/major/${cardId}.png`}
               alt={cardNameKo}
               fill
               style={{ objectFit: "cover" }}

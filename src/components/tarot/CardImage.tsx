@@ -32,7 +32,7 @@ export function CardImage({
   return (
     <div className={`${orientation === "reversed" ? "rotate-180" : ""} ${className}`}>
       <Image
-        src={`/cards/major/${cardId}.svg`}
+        src={`/cards/major/${cardId}.png`}
         alt={`타로 카드 ${cardId}`}
         width={240}
         height={360}
