@@ -49,7 +49,7 @@ export function CardSlot({ index, label, filled, onClick }: CardSlotProps) {
           overflow: "hidden",
           padding: 0,
           ...(filled && {
-            boxShadow: "0px 0px 10px rgba(0,0,0,0.1)",
+            boxShadow: "0px 0px 4px rgba(0,0,0,0.1)",
             "&:hover": {
               transform: "scale(1.05)",
               boxShadow: "0px 0px 14px rgba(0,0,0,0.15)",
