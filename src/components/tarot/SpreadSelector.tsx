@@ -5,9 +5,9 @@ import { FlexBox, Typography } from "@wanteddev/wds";
 import type { Spread } from "@/lib/tarot/types";
 import { SPREAD_CONFIGS } from "@/lib/tarot/types";
 
-const SPREAD_IMAGES: Record<Spread, { src: string; width: number; height: number }> = {
-  one: { src: "/images/spread-one.png", width: 45, height: 67 },
-  three: { src: "/images/spread-three.png", width: 135, height: 67 },
+const SPREAD_IMAGES: Record<Spread, { on: string; off: string; width: number; height: number }> = {
+  one: { on: "/images/spread-one-on.png", off: "/images/spread-one-off.png", width: 45, height: 67 },
+  three: { on: "/images/spread-three-on.png", off: "/images/spread-three-off.png", width: 135, height: 67 },
 };
 
 interface SpreadSelectorProps {
@@ -53,13 +53,12 @@ export function SpreadSelector({ selected, onSelect }: SpreadSelectorProps) {
             })}
           >
             <Image
-              src={img.src}
+              src={isSelected ? img.on : img.off}
               alt={spread.label}
               width={img.width}
               height={img.height}
               style={{
                 objectFit: "contain",
-                opacity: isSelected ? 1 : 0.4,
                 transition: "opacity 0.2s ease",
               }}
             />
