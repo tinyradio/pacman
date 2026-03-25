@@ -1,12 +1,13 @@
 "use client";
 
+import Image from "next/image";
 import { FlexBox, Typography } from "@wanteddev/wds";
 import type { Spread } from "@/lib/tarot/types";
 import { SPREAD_CONFIGS } from "@/lib/tarot/types";
 
-const SPREAD_NUMBERS: Record<Spread, string> = {
-  one: "01",
-  three: "03",
+const SPREAD_IMAGES: Record<Spread, { src: string; width: number; height: number }> = {
+  one: { src: "/images/spread-one.png", width: 45, height: 67 },
+  three: { src: "/images/spread-three.png", width: 135, height: 67 },
 };
 
 interface SpreadSelectorProps {
@@ -21,6 +22,7 @@ export function SpreadSelector({ selected, onSelect }: SpreadSelectorProps) {
     <FlexBox gap="12px">
       {spreads.map((spread) => {
         const isSelected = selected === spread.type;
+        const img = SPREAD_IMAGES[spread.type];
         return (
           <FlexBox
             key={spread.type}
@@ -50,26 +52,17 @@ export function SpreadSelector({ selected, onSelect }: SpreadSelectorProps) {
               transition: "all 0.2s ease",
             })}
           >
-            <FlexBox
-              alignItems="center"
-              justifyContent="center"
-              sx={(theme) => ({
-                width: "44px",
-                height: "66px",
-                borderRadius: "8px",
-                backgroundColor: isSelected
-                  ? theme.atomic.blue[95]
-                  : theme.atomic.coolNeutral[98],
-                color: isSelected
-                  ? theme.semantic.primary.normal
-                  : theme.semantic.label.assistive,
-                transition: "all 0.2s ease",
-              })}
-            >
-              <Typography variant="headline2" weight="bold" sx={{ fontSize: "14px" }}>
-                {SPREAD_NUMBERS[spread.type]}
-              </Typography>
-            </FlexBox>
+            <Image
+              src={img.src}
+              alt={spread.label}
+              width={img.width}
+              height={img.height}
+              style={{
+                objectFit: "contain",
+                opacity: isSelected ? 1 : 0.4,
+                transition: "opacity 0.2s ease",
+              }}
+            />
             <FlexBox flexDirection="column" gap="4px" alignItems="center">
               <Typography
                 variant="label1"
