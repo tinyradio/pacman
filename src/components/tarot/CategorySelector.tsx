@@ -56,9 +56,6 @@ export function CategorySelector({
                 : `rgba(255, 255, 255, ${theme.opacity[61]})`,
               cursor: "pointer",
               transition: "all 0.2s ease",
-              "&:hover": {
-                boxShadow: theme.semantic.elevation.shadow.normal.small,
-              },
             })}
           >
             <FlexBox

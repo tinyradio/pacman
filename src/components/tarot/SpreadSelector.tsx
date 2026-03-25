@@ -48,9 +48,6 @@ export function SpreadSelector({ selected, onSelect }: SpreadSelectorProps) {
               cursor: "pointer",
               textAlign: "center",
               transition: "all 0.2s ease",
-              "&:hover": {
-                boxShadow: theme.semantic.elevation.shadow.normal.small,
-              },
             })}
           >
             <FlexBox
