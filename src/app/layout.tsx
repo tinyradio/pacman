@@ -16,6 +16,7 @@ export default function RootLayout({
   return (
     <html lang="ko" suppressHydrationWarning>
       <head>
+        <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
         <link rel="preconnect" href="https://cdn.jsdelivr.net" />
         <link
           rel="stylesheet"
