@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { FlexBox } from "@wanteddev/wds";
 import type { Orientation } from "@/lib/tarot/types";
 
 interface CardFlipProps {
@@ -41,16 +42,16 @@ export function CardFlip({
   }, [delay]);
 
   return (
-    <div
-      style={{
+    <FlexBox
+      sx={(theme) => ({
         position: "relative",
         width: `${width}px`,
         height: `${height}px`,
         perspective: "800px",
         borderRadius: flipped ? "12px" : "0px",
-        boxShadow: flipped ? "0px 0px 10px rgba(0,0,0,0.1)" : "none",
+        boxShadow: flipped ? theme.semantic.elevation.shadow.normal.small : "none",
         transition: "box-shadow 0.5s ease 0.4s, border-radius 0.5s ease 0.4s",
-      }}
+      })}
     >
       <div
         style={{
@@ -82,7 +83,7 @@ export function CardFlip({
             src="/cards/back.webp"
             alt="카드 뒷면"
             fill
-            sizes="108px"
+            sizes={`${width}px`}
             style={{ objectFit: "cover" }}
           />
         </div>
@@ -109,12 +110,12 @@ export function CardFlip({
               src={`/cards/major/${cardId}.webp`}
               alt={cardNameKo}
               fill
-              sizes="108px"
+              sizes={`${width}px`}
               style={{ objectFit: "cover" }}
             />
           </div>
         </div>
       </div>
-    </div>
+    </FlexBox>
   );
 }

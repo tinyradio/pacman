@@ -6,7 +6,7 @@ import {
   FlexBox,
   Typography,
   Button,
-  Chip,
+  ContentBadge,
   Skeleton,
   ActionArea,
   ActionAreaButton,
@@ -97,12 +97,12 @@ function DrawContent() {
       <FlexBox flexDirection="column" gap="24px" sx={{ paddingBottom: "80px" }}>
         {/* Context chips */}
         <FlexBox gap="8px" alignItems="center">
-          <Chip variant="solid" size="small" disableInteraction sx={{ backgroundColor: "white", cursor: "default", pointerEvents: "none", "& *": { display: "none" }, "& > span": { display: "inline" } }}>
+          <ContentBadge color="neutral" size="small">
             {config.label}
-          </Chip>
-          <Chip variant="solid" size="small" disableInteraction sx={{ backgroundColor: "white", cursor: "default", pointerEvents: "none", "& *": { display: "none" }, "& > span": { display: "inline" } }}>
+          </ContentBadge>
+          <ContentBadge color="neutral" size="small">
             {categoryLabel.label}
-          </Chip>
+          </ContentBadge>
           <FlexBox flex="1" />
           <Typography
             variant="label2"

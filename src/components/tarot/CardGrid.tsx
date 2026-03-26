@@ -45,7 +45,6 @@ export const CardGrid = memo(function CardGrid({
             cardIndex={cardIndex}
             isSelected={isSelected}
             isDisabled={isDisabled}
-            isMaxSelected={isMaxSelected}
             onSelect={onSelect}
           />
         );
@@ -58,38 +57,36 @@ const CardGridItem = memo(function CardGridItem({
   cardIndex,
   isSelected,
   isDisabled,
-  isMaxSelected,
   onSelect,
 }: {
   cardIndex: number;
   isSelected: boolean;
   isDisabled: boolean;
-  isMaxSelected: boolean;
   onSelect: (index: number) => void;
 }) {
   return (
-    <button
+    <FlexBox
+      as="button"
       type="button"
-      role="gridcell"
       onClick={() => !isDisabled && onSelect(cardIndex)}
       disabled={isDisabled}
-      style={{
+      aria-label={`카드 ${cardIndex + 1}번`}
+      aria-selected={isSelected}
+      sx={(theme) => ({
         position: "relative",
         width: "100%",
         aspectRatio: "2/3",
         borderRadius: "8px",
         overflow: "hidden",
         transition: "all 0.2s ease",
-        opacity: isSelected ? 0.12 : isMaxSelected ? 0.3 : 1,
+        opacity: isSelected ? 0.12 : isDisabled ? 0.3 : 1,
         transform: isSelected ? "scale(0.88)" : "scale(1)",
         cursor: isDisabled ? "not-allowed" : "pointer",
         border: "none",
         padding: 0,
         background: "none",
-        boxShadow: isDisabled ? "none" : "0px 0px 4px rgba(0,0,0,0.1)",
-      }}
-      aria-label={`카드 ${cardIndex + 1}번`}
-      aria-selected={isSelected}
+        boxShadow: isDisabled ? "none" : theme.semantic.elevation.shadow.normal.xsmall,
+      })}
     >
       <Image
         src="/cards/back.webp"
@@ -98,6 +95,6 @@ const CardGridItem = memo(function CardGridItem({
         sizes="56px"
         style={{ objectFit: "cover" }}
       />
-    </button>
+    </FlexBox>
   );
 });

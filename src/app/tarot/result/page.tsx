@@ -60,7 +60,6 @@ function ResultContent() {
             border: "none",
             outline: "none",
             boxShadow: "none",
-            "& [class*='bi8qpk']": { display: "none !important" },
           })}
         >
           다시 뽑기
@@ -78,7 +77,6 @@ function ResultContent() {
             border: "none",
             outline: "none",
             boxShadow: "none",
-            "& [class*='bi8qpk']": { display: "none !important" },
           })}
         >
           홈으로
