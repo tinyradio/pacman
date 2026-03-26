@@ -6,8 +6,8 @@ import type { Spread } from "@/lib/tarot/types";
 import { SPREAD_CONFIGS } from "@/lib/tarot/types";
 
 const SPREAD_IMAGES: Record<Spread, { on: string; off: string; width: number; height: number }> = {
-  one: { on: "/images/spread-one-on.png", off: "/images/spread-one-off.png", width: 56, height: 80 },
-  three: { on: "/images/spread-three-on.png", off: "/images/spread-three-off.png", width: 99, height: 80 },
+  one: { on: "/images/spread-one-on.png", off: "/images/spread-one-off.png", width: 53, height: 76 },
+  three: { on: "/images/spread-three-on.png", off: "/images/spread-three-off.png", width: 94, height: 76 },
 };
 
 interface SpreadSelectorProps {
