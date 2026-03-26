@@ -4,6 +4,7 @@ import {
   FlexBox,
   Typography,
   ContentBadge,
+  Chip,
   Divider,
 } from "@wanteddev/wds";
 import { CardFlip } from "./CardFlip";
@@ -26,12 +27,12 @@ export function ReadingResult({ cards, category, spread }: ReadingResultProps) {
     <FlexBox flexDirection="column" gap="20px">
       {/* Context */}
       <FlexBox gap="8px" alignItems="center">
-        <ContentBadge color="neutral" size="small">
+        <Chip variant="solid" size="small" disableInteraction sx={(theme) => ({ backgroundColor: theme.semantic.background.normal.normal, cursor: "default", pointerEvents: "none" })}>
           {config.label}
-        </ContentBadge>
-        <ContentBadge color="neutral" size="small">
+        </Chip>
+        <Chip variant="solid" size="small" disableInteraction sx={(theme) => ({ backgroundColor: theme.semantic.background.normal.normal, cursor: "default", pointerEvents: "none" })}>
           {categoryLabel.label}
-        </ContentBadge>
+        </Chip>
       </FlexBox>
 
       {/* Card reveal area */}
