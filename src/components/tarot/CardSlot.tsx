@@ -69,7 +69,7 @@ export function CardSlot({ index, label, filled, onClick }: CardSlotProps) {
             variant="title3"
             weight="bold"
             color="semantic.label.disable"
-            sx={{ fontSize: "16px" }}
+            sx={{ fontSize: "18px" }}
           >
             {index + 1}
           </Typography>
