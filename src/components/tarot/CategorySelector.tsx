@@ -71,6 +71,9 @@ export function CategorySelector({
                 color: isSelected
                   ? theme.semantic.primary.normal
                   : theme.semantic.label.assistive,
+                "& svg": {
+                  opacity: isSelected ? theme.opacity[74] : 1,
+                },
                 transition: "all 0.2s ease",
               })}
             >
