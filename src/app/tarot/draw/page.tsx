@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useRef, useEffect, Suspense } from "react";
+import { useState, useCallback, useRef, useEffect, useMemo, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import {
   FlexBox,
@@ -63,7 +63,7 @@ function DrawContent() {
 
   const config = isValid ? SPREAD_CONFIGS[spreadParam] : null;
   const categoryLabel = isValid ? CATEGORY_LABELS[categoryParam] : null;
-  const selectedIndices = selectedCards.map((c) => c.cardId);
+  const selectedIndices = useMemo(() => selectedCards.map((c) => c.cardId), [selectedCards]);
   const isComplete = config ? selectedCards.length >= config.cardCount : false;
 
   const configRef = useRef(config);

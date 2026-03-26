@@ -1,71 +1,13 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { FlexBox, Typography, Button } from "@wanteddev/wds";
-
-function CustomToast({ message, visible }: { message: string; visible: boolean }) {
-  return (
-    <div
-      style={{
-        position: "fixed",
-        bottom: "40px",
-        left: "50%",
-        transform: `translateX(-50%) translateY(${visible ? "0" : "20px"})`,
-        opacity: visible ? 1 : 0,
-        transition: "all 0.3s ease",
-        backgroundColor: "rgba(27, 28, 30, 0.52)",
-        color: "white",
-        padding: "12px 24px",
-        borderRadius: "12px",
-        fontSize: "14px",
-        fontWeight: 500,
-        textAlign: "center",
-        zIndex: 9999,
-        pointerEvents: "none",
-      }}
-    >
-      {message}
-    </div>
-  );
-}
+import { CustomToast } from "@/components/tarot/CustomToast";
+import { useShareToast } from "@/lib/tarot/useShareToast";
 
 export default function TarotLandingPage() {
-  const [toastMessage, setToastMessage] = useState("");
-  const [toastVisible, setToastVisible] = useState(false);
-
-  const showToast = useCallback((msg: string) => {
-    setToastMessage(msg);
-    setToastVisible(true);
-  }, []);
-
-  useEffect(() => {
-    if (!toastVisible) return;
-    const timeout = setTimeout(() => setToastVisible(false), 2000);
-    return () => clearTimeout(timeout);
-  }, [toastVisible]);
-
-  async function handleShare() {
-    const url = `${window.location.origin}/tarot`;
-    try {
-      if (navigator.clipboard) {
-        await navigator.clipboard.writeText(url);
-      } else {
-        const textarea = document.createElement("textarea");
-        textarea.value = url;
-        textarea.style.position = "fixed";
-        textarea.style.opacity = "0";
-        document.body.appendChild(textarea);
-        textarea.select();
-        document.execCommand("copy");
-        document.body.removeChild(textarea);
-      }
-      showToast("링크가 복사되었습니다");
-    } catch {
-      showToast("링크 복사에 실패했습니다");
-    }
-  }
+  const { toastMessage, toastVisible, handleShare } = useShareToast();
 
   return (
     <>
@@ -76,7 +18,6 @@ export default function TarotLandingPage() {
         justifyContent="center"
         sx={{ minHeight: "calc(100dvh - 88px)" }}
       >
-        {/* Card fan illustration */}
         <FlexBox
           justifyContent="center"
           alignItems="center"
@@ -92,7 +33,6 @@ export default function TarotLandingPage() {
           />
         </FlexBox>
 
-        {/* Title & Description */}
         <FlexBox
           flexDirection="column"
           alignItems="center"
@@ -117,7 +57,6 @@ export default function TarotLandingPage() {
           </Typography>
         </FlexBox>
 
-        {/* CTA Buttons */}
         <FlexBox
           flexDirection="column"
           gap="12px"

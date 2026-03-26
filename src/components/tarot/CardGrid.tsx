@@ -95,6 +95,7 @@ const CardGridItem = memo(function CardGridItem({
         src="/cards/back.webp"
         alt=""
         fill
+        sizes="56px"
         style={{ objectFit: "cover" }}
       />
     </button>

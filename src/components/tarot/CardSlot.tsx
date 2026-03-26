@@ -62,6 +62,7 @@ export function CardSlot({ index, label, filled, onClick }: CardSlotProps) {
             src="/cards/back.webp"
             alt="선택된 카드"
             fill
+            sizes="64px"
             style={{ objectFit: "cover" }}
           />
         ) : (

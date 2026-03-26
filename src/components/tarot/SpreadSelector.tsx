@@ -15,12 +15,13 @@ interface SpreadSelectorProps {
   onSelect: (spread: Spread) => void;
 }
 
+const SPREADS = Object.values(SPREAD_CONFIGS);
+
 export function SpreadSelector({ selected, onSelect }: SpreadSelectorProps) {
-  const spreads = Object.values(SPREAD_CONFIGS);
 
   return (
     <FlexBox gap="12px">
-      {spreads.map((spread) => {
+      {SPREADS.map((spread) => {
         const isSelected = selected === spread.type;
         const img = SPREAD_IMAGES[spread.type];
         return (

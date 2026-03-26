@@ -82,6 +82,7 @@ export function CardFlip({
             src="/cards/back.webp"
             alt="카드 뒷면"
             fill
+            sizes="108px"
             style={{ objectFit: "cover" }}
           />
         </div>
@@ -108,6 +109,7 @@ export function CardFlip({
               src={`/cards/major/${cardId}.webp`}
               alt={cardNameKo}
               fill
+              sizes="108px"
               style={{ objectFit: "cover" }}
             />
           </div>

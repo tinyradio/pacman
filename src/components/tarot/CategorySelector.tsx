@@ -15,6 +15,11 @@ const CATEGORY_ICONS: Record<Category, React.ReactNode> = {
   career: <IconBusinessBag sx={{ fontSize: "20px" }} />,
 };
 
+const CATEGORIES = Object.entries(CATEGORY_LABELS) as [
+  Category,
+  (typeof CATEGORY_LABELS)[Category],
+][];
+
 interface CategorySelectorProps {
   selected: Category | null;
   onSelect: (category: Category) => void;
@@ -24,14 +29,9 @@ export function CategorySelector({
   selected,
   onSelect,
 }: CategorySelectorProps) {
-  const categories = Object.entries(CATEGORY_LABELS) as [
-    Category,
-    (typeof CATEGORY_LABELS)[Category],
-  ][];
-
   return (
     <FlexBox gap="12px">
-      {categories.map(([key, config]) => {
+      {CATEGORIES.map(([key, config]) => {
         const isSelected = selected === key;
         return (
           <FlexBox
