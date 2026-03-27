@@ -153,7 +153,10 @@ export function ReadingResult({ cards, category, spread }: ReadingResultProps) {
 
             {/* Keywords */}
             <FlexBox gap="6px" sx={{ flexWrap: "wrap" }}>
-              {cardData.keywords.map((kw) => (
+              <ContentBadge color="neutral" size="small">
+                {categoryLabel.label}
+              </ContentBadge>
+              {cardData.keywords.slice(1).map((kw) => (
                 <ContentBadge key={kw} color="neutral" size="small">
                   {kw}
                 </ContentBadge>
