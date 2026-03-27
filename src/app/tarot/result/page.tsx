@@ -60,6 +60,9 @@ function ResultContent() {
             border: "none",
             outline: "none",
             boxShadow: "none",
+            "&:hover": {
+              backgroundColor: theme.semantic.fill.normal,
+            },
           })}
         >
           다시 뽑기
@@ -77,6 +80,9 @@ function ResultContent() {
             border: "none",
             outline: "none",
             boxShadow: "none",
+            "&:hover": {
+              backgroundColor: theme.semantic.fill.normal,
+            },
           })}
         >
           홈으로
