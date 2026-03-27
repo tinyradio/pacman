@@ -61,7 +61,7 @@ function ResultContent() {
             outline: "none",
             boxShadow: "none",
             "&:hover": {
-              backgroundColor: theme.semantic.fill.alternative,
+              backgroundColor: theme.atomic.coolNeutral[98],
             },
           })}
         >
@@ -81,7 +81,7 @@ function ResultContent() {
             outline: "none",
             boxShadow: "none",
             "&:hover": {
-              backgroundColor: theme.semantic.fill.alternative,
+              backgroundColor: theme.atomic.coolNeutral[98],
             },
           })}
         >
