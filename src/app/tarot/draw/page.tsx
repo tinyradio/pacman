@@ -124,7 +124,7 @@ function DrawContent() {
         >
           {isComplete
             ? "모든 카드를 선택했습니다. 결과를 확인하세요."
-            : `아래 카드를 신중히 선택해 ${categoryLabel.label} 운세를 점쳐보세요`}
+            : `아래 카드를 신중히 선택해 ${categoryLabel.label} 운세를 점쳐보세요.`}
         </Typography>
 
         {/* Grid */}
