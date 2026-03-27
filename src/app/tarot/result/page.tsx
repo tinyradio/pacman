@@ -61,7 +61,7 @@ function ResultContent() {
             outline: "none",
             boxShadow: "none",
             "&:hover": {
-              opacity: theme.opacity[74],
+              opacity: theme.opacity[88],
             },
           })}
         >
@@ -81,7 +81,7 @@ function ResultContent() {
             outline: "none",
             boxShadow: "none",
             "&:hover": {
-              opacity: theme.opacity[74],
+              opacity: theme.opacity[88],
             },
           })}
         >
