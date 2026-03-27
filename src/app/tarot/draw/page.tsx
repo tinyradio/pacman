@@ -6,7 +6,6 @@ import {
   FlexBox,
   Typography,
   Button,
-  Chip,
   Skeleton,
   ActionArea,
   ActionAreaButton,
@@ -95,24 +94,6 @@ function DrawContent() {
   return (
     <>
       <FlexBox flexDirection="column" gap="24px" sx={{ paddingBottom: "80px" }}>
-        {/* Context chips */}
-        <FlexBox gap="8px" alignItems="center">
-          <Chip variant="solid" size="small" disableInteraction sx={(theme) => ({ backgroundColor: theme.semantic.background.normal.normal, cursor: "default", pointerEvents: "none" })}>
-            {config.label}
-          </Chip>
-          <Chip variant="solid" size="small" disableInteraction sx={(theme) => ({ backgroundColor: theme.semantic.background.normal.normal, cursor: "default", pointerEvents: "none" })}>
-            {categoryLabel.label}
-          </Chip>
-          <FlexBox flex="1" />
-          <Typography
-            variant="label2"
-            weight="bold"
-            color={isComplete ? "semantic.primary.normal" : "semantic.label.assistive"}
-          >
-            {selectedCards.length} / {config.cardCount}
-          </Typography>
-        </FlexBox>
-
         {/* Slots */}
         <FlexBox
           justifyContent="center"
@@ -143,7 +124,7 @@ function DrawContent() {
         >
           {isComplete
             ? "모든 카드를 선택했습니다. 결과를 확인하세요."
-            : "아래 카드 중 마음이 끌리는 카드를 신중하게 선택하세요"}
+            : `나의 ${categoryLabel.label} 운세를 점쳐보세요`}
         </Typography>
 
         {/* Grid */}
