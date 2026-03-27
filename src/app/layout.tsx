@@ -4,6 +4,7 @@ import { Providers } from "@/components/Providers";
 import "@wanteddev/wds/global.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://pacman-six-liart.vercel.app"),
   title: "타로 카드 운세",
   description: "메이저 아르카나 22장으로 당신의 직장, 재물, 연애 운세를 점쳐보세요.",
   openGraph: {
