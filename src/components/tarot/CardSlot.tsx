@@ -70,9 +70,9 @@ export function CardSlot({ index, label, filled, onClick }: CardSlotProps) {
             variant="title3"
             weight="bold"
             color="semantic.label.disable"
-            sx={{ fontSize: "18px" }}
+            sx={{ fontSize: "18px", fontFamily: "'Noto Sans', sans-serif", fontWeight: 600 }}
           >
-            {index + 1}
+            {["I", "II", "III"][index]}
           </Typography>
         )}
       </FlexBox>
