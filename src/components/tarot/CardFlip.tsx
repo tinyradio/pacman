@@ -9,7 +9,6 @@ import {
   ModalContainer,
   ModalContent,
   ModalContentItem,
-  ModalClose,
   Divider,
   ContentBadge,
 } from "@wanteddev/wds";
@@ -167,15 +166,28 @@ export function CardFlip({
             <Typography variant="label1" weight="bold">
               {cardNameKo}
             </Typography>
-            <ModalClose
-              sx={{
+            <button
+              type="button"
+              onClick={() => setShowModal(false)}
+              aria-label="닫기"
+              style={{
                 position: "absolute",
                 right: "12px",
                 top: "50%",
                 transform: "translateY(-50%)",
+                background: "none",
+                border: "none",
+                padding: "4px",
+                cursor: "pointer",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
               }}
-              size="small"
-            />
+            >
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M5 5L15 15M15 5L5 15" stroke="#37383C" strokeWidth="1.8" strokeLinecap="round" />
+              </svg>
+            </button>
           </FlexBox>
 
           <Divider color="semantic.fill.normal" />
