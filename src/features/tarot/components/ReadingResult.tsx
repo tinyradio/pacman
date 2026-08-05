@@ -1,5 +1,6 @@
 "use client";
 
+import { useReducedMotion } from "motion/react";
 import {
   FlexBox,
   Typography,
@@ -9,8 +10,9 @@ import {
 import { CardFlip } from "./CardFlip";
 import { getCard } from "@/features/tarot/data/cards";
 import { getInterpretation } from "@/features/tarot/data/interpretations";
+import { revealTimings } from "@/features/tarot/lib/motion";
 import type { DrawnCard, Category, Spread, Position } from "@/features/tarot/lib/types";
-import { SPREAD_CONFIGS, CATEGORY_LABELS } from "@/features/tarot/lib/types";
+import { SPREAD_CONFIGS } from "@/features/tarot/lib/types";
 
 interface ReadingResultProps {
   cards: DrawnCard[];
@@ -20,7 +22,11 @@ interface ReadingResultProps {
 
 export function ReadingResult({ cards, category, spread }: ReadingResultProps) {
   const config = SPREAD_CONFIGS[spread];
-  const categoryLabel = CATEGORY_LABELS[category];
+  const reduced = useReducedMotion();
+
+  // 카드 플립만 순차 연출하고, 텍스트(메타·해석 패널)는 처음부터 모두 노출한다.
+  const t = revealTimings(cards.length);
+  const flipDelayMs = (i: number) => (reduced ? 0 : t.flipStart(i) * 1000);
 
   return (
     <FlexBox flexDirection="column" gap="20px">
@@ -61,7 +67,7 @@ export function ReadingResult({ cards, category, spread }: ReadingResultProps) {
                 <CardFlip
                   cardId={card.cardId}
                   orientation={card.orientation}
-                  delay={index * 800}
+                  delay={flipDelayMs(index)}
                   cardNameKo={cardData?.nameKo ?? ""}
                   size={cards.length > 1 ? "small" : "default"}
                 />
@@ -120,45 +126,45 @@ export function ReadingResult({ cards, category, spread }: ReadingResultProps) {
               backgroundColor: theme.semantic.background.normal.normal,
             })}
           >
-            {/* Position label + Card title */}
-            <FlexBox alignItems="flex-start" justifyContent="space-between">
-              <FlexBox flexDirection="column" gap="2px">
-                <Typography variant="headline2" weight="bold">
-                  {cardData.nameKo}
-                </Typography>
-                <Typography
-                  variant="caption1"
-                  color="semantic.label.alternative"
-                >
-                  {cardData.name} ·{" "}
-                  {card.orientation === "reversed" ? "역방향" : "정방향"}
-                </Typography>
+              {/* Position label + Card title */}
+              <FlexBox alignItems="flex-start" justifyContent="space-between">
+                <FlexBox flexDirection="column" gap="2px">
+                  <Typography variant="headline2" weight="bold">
+                    {cardData.nameKo}
+                  </Typography>
+                  <Typography
+                    variant="caption1"
+                    color="semantic.label.alternative"
+                  >
+                    {cardData.name} ·{" "}
+                    {card.orientation === "reversed" ? "역방향" : "정방향"}
+                  </Typography>
+                </FlexBox>
+                {cards.length > 1 && (
+                  <ContentBadge color="neutral" size="small">
+                    {config.positions[index]}
+                  </ContentBadge>
+                )}
               </FlexBox>
-              {cards.length > 1 && (
-                <ContentBadge color="neutral" size="small">
-                  {config.positions[index]}
-                </ContentBadge>
-              )}
-            </FlexBox>
 
-            <Divider color="semantic.fill.normal" />
+              <Divider color="semantic.fill.normal" />
 
-            {/* Reading text */}
-            <Typography
-              variant="body2-reading"
-              color="semantic.label.alternative"
-            >
-              {text}
-            </Typography>
+              {/* Reading text */}
+              <Typography
+                variant="body2-reading"
+                color="semantic.label.alternative"
+              >
+                {text}
+              </Typography>
 
-            {/* Keywords */}
-            <FlexBox gap="6px" sx={{ flexWrap: "wrap" }}>
-              {cardData.keywords.slice(1).map((kw) => (
-                <ContentBadge key={kw} color="neutral" size="small">
-                  {kw}
-                </ContentBadge>
-              ))}
-            </FlexBox>
+              {/* Keywords */}
+              <FlexBox gap="6px" sx={{ flexWrap: "wrap" }}>
+                {cardData.keywords.slice(1).map((kw) => (
+                  <ContentBadge key={kw} color="neutral" size="small">
+                    {kw}
+                  </ContentBadge>
+                ))}
+              </FlexBox>
           </FlexBox>
         );
       })}

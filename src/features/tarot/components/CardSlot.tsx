@@ -1,16 +1,20 @@
 "use client";
 
 import Image from "next/image";
+import { motion } from "motion/react";
 import { FlexBox, Typography } from "@wanteddev/wds";
+import { SPRING_CARD } from "@/features/tarot/lib/motion";
 
 interface CardSlotProps {
   index: number;
   label: string;
-  filled: boolean;
-  onClick?: () => void;
+  cardId: number | null;
+  onRemove?: () => void;
 }
 
-export function CardSlot({ index, label, filled, onClick }: CardSlotProps) {
+export function CardSlot({ index, label, cardId, onRemove }: CardSlotProps) {
+  const filled = cardId !== null;
+
   return (
     <FlexBox flexDirection="column" alignItems="center" gap="8px">
       <Typography
@@ -25,7 +29,7 @@ export function CardSlot({ index, label, filled, onClick }: CardSlotProps) {
         type="button"
         alignItems="center"
         justifyContent="center"
-        onClick={onClick}
+        onClick={onRemove}
         disabled={!filled}
         aria-label={
           filled
@@ -45,26 +49,46 @@ export function CardSlot({ index, label, filled, onClick }: CardSlotProps) {
             ? theme.semantic.background.normal.normal
             : theme.semantic.fill.alternative,
           cursor: filled ? "pointer" : "default",
-          transition: "all 0.25s ease",
-          overflow: "hidden",
+          transition:
+            "background-color 0.25s ease, transform 0.25s ease",
           padding: 0,
           ...(filled && {
-            boxShadow: theme.semantic.elevation.shadow.normal.xsmall,
             "&:hover": {
               transform: "scale(1.05)",
-              boxShadow: theme.semantic.elevation.shadow.normal.small,
             },
           }),
         })}
       >
-        {filled ? (
-          <Image
-            src="/cards/back.webp"
-            alt="선택된 카드"
-            fill
-            sizes="64px"
-            style={{ objectFit: "cover" }}
-          />
+        {cardId !== null ? (
+          // 그리드 쪽과 같은 layoutId — 마운트 시 그리드 위치에서 슬롯까지 스프링 비행
+          <motion.div
+            layoutId={`tarot-card-${cardId}`}
+            transition={SPRING_CARD}
+            style={{
+              position: "absolute",
+              inset: 0,
+              zIndex: 2,
+              borderRadius: 6,
+            }}
+          >
+            <FlexBox
+              sx={(theme) => ({
+                position: "absolute",
+                inset: 0,
+                borderRadius: "6px",
+                overflow: "hidden",
+                boxShadow: theme.semantic.elevation.shadow.normal.xsmall,
+              })}
+            >
+              <Image
+                src="/cards/back.webp"
+                alt="선택된 카드"
+                fill
+                sizes="64px"
+                style={{ objectFit: "cover" }}
+              />
+            </FlexBox>
+          </motion.div>
         ) : (
           <Typography
             variant="title3"

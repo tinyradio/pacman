@@ -36,7 +36,7 @@ function ResultContent() {
     }
   }, [isValid, hasValidCards, router]);
 
-  if (!isValid || !hasValidCards || !cards || !config) return null;
+  if (!isValid || !hasValidCards || !cards || !config) return <ResultSkeleton />;
 
   return (
     <FlexBox flexDirection="column" gap="24px">
@@ -47,44 +47,42 @@ function ResultContent() {
       />
 
       <FlexBox gap="12px">
-        <Button
-          as={Link}
-          href="/tarot/select"
-          variant="outlined"
-          color="assistive"
-          size="large"
-          fullWidth
-          leadingContent={<IconRefresh />}
-          sx={(theme) => ({
-            backgroundColor: theme.semantic.background.normal.normal,
-            border: "none",
-            outline: "none",
-            boxShadow: "none",
-            pointerEvents: "auto",
-            "& [class*='Interaction'], & [class*='bi8qpk']": { display: "none !important" },
-          })}
-        >
-          다시 뽑기
-        </Button>
-        <Button
-          as={Link}
-          href="/tarot"
-          variant="outlined"
-          color="assistive"
-          size="large"
-          fullWidth
-          leadingContent={<IconHome />}
-          sx={(theme) => ({
-            backgroundColor: theme.semantic.background.normal.normal,
-            border: "none",
-            outline: "none",
-            boxShadow: "none",
-            pointerEvents: "auto",
-            "& [class*='Interaction'], & [class*='bi8qpk']": { display: "none !important" },
-          })}
-        >
-          홈으로
-        </Button>
+          <Button
+            as={Link}
+            href="/tarot/select"
+            variant="outlined"
+            color="assistive"
+            size="large"
+            fullWidth
+            leadingContent={<IconRefresh />}
+            sx={(theme) => ({
+              backgroundColor: theme.semantic.background.normal.normal,
+              border: "none",
+              outline: "none",
+              boxShadow: "none",
+              "& [wds-component='with-interaction']": { display: "none" },
+            })}
+          >
+            다시 뽑기
+          </Button>
+          <Button
+            as={Link}
+            href="/tarot"
+            variant="outlined"
+            color="assistive"
+            size="large"
+            fullWidth
+            leadingContent={<IconHome />}
+            sx={(theme) => ({
+              backgroundColor: theme.semantic.background.normal.normal,
+              border: "none",
+              outline: "none",
+              boxShadow: "none",
+              "& [wds-component='with-interaction']": { display: "none" },
+            })}
+          >
+            홈으로
+          </Button>
       </FlexBox>
     </FlexBox>
   );
@@ -92,15 +90,10 @@ function ResultContent() {
 
 function ResultSkeleton() {
   return (
-    <FlexBox flexDirection="column" gap="24px">
-      <Skeleton variant="rectangle" width="100%" height="46px" radius="12px" />
-      <FlexBox gap="8px">
-        <Skeleton variant="rectangle" width="64px" height="28px" radius="14px" />
-        <Skeleton variant="rectangle" width="52px" height="28px" radius="14px" />
-      </FlexBox>
-      <Skeleton variant="rectangle" width="100%" height="280px" radius="20px" />
-      <Skeleton variant="rectangle" width="100%" height="200px" radius="20px" />
-      <FlexBox gap="12px" sx={{ paddingTop: "16px" }}>
+    <FlexBox flexDirection="column" gap="20px">
+      <Skeleton variant="rectangle" width="100%" height="320px" radius="20px" />
+      <Skeleton variant="rectangle" width="100%" height="220px" radius="20px" />
+      <FlexBox gap="12px" sx={{ paddingTop: "4px" }}>
         <Skeleton variant="rectangle" width="100%" height="48px" radius="12px" />
         <Skeleton variant="rectangle" width="100%" height="48px" radius="12px" />
       </FlexBox>

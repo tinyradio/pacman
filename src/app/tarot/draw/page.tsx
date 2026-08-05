@@ -1,17 +1,20 @@
 "use client";
 
-import { useState, useCallback, useRef, useEffect, useMemo, Suspense } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
 import {
-  FlexBox,
-  Typography,
-  Button,
-  Skeleton,
-  ActionArea,
-  ActionAreaButton,
-} from "@wanteddev/wds";
+  useState,
+  useCallback,
+  useEffect,
+  useMemo,
+  useSyncExternalStore,
+  Suspense,
+} from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { motion, LayoutGroup } from "motion/react";
+import { FlexBox, Typography, Button, Skeleton } from "@wanteddev/wds";
 import { CardGrid } from "@/features/tarot/components/CardGrid";
 import { CardSlot } from "@/features/tarot/components/CardSlot";
+import { StickyCtaBar } from "@/features/tarot/components/StickyCtaBar";
+import { useInlineCtaSentinel } from "@/features/tarot/lib/useInlineCtaSentinel";
 import {
   isValidSpread,
   isValidCategory,
@@ -19,10 +22,13 @@ import {
   determineOrientation,
   shuffleArray,
 } from "@/features/tarot/lib/utils";
+import { fadeRise } from "@/features/tarot/lib/motion";
 import { SPREAD_CONFIGS, CATEGORY_LABELS } from "@/features/tarot/lib/types";
 import type { DrawnCard } from "@/features/tarot/lib/types";
 
 const DEFAULT_ORDER = Array.from({ length: 22 }, (_, i) => i);
+
+const emptySubscribe = () => () => {};
 
 function DrawContent() {
   const router = useRouter();
@@ -34,25 +40,19 @@ function DrawContent() {
   const isValid = isValidSpread(spreadParam) && isValidCategory(categoryParam);
 
   const [selectedCards, setSelectedCards] = useState<DrawnCard[]>([]);
-  const [shuffledOrder, setShuffledOrder] = useState<number[]>(DEFAULT_ORDER);
+  // 서버/하이드레이션 렌더는 기본 순서를 쓰고, 하이드레이션 직후에만 셔플한다
+  // (Math.random을 SSR에 노출하면 하이드레이션 불일치 — 뒷면이 동일해 리오더는 보이지 않음)
+  const isClient = useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false
+  );
+  const shuffledOrder = useMemo(
+    () => (isClient ? shuffleArray([...DEFAULT_ORDER]) : DEFAULT_ORDER),
+    [isClient]
+  );
 
-  useEffect(() => {
-    setShuffledOrder(shuffleArray([...DEFAULT_ORDER]));
-  }, []);
-
-  const inlineCtaRef = useRef<HTMLDivElement>(null);
-  const [showFixedCta, setShowFixedCta] = useState(false);
-
-  useEffect(() => {
-    const el = inlineCtaRef.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => setShowFixedCta(!entry.isIntersecting),
-      { threshold: 0.1 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
+  const { sentinelRef, showFixed } = useInlineCtaSentinel();
 
   useEffect(() => {
     if (!isValid) {
@@ -65,128 +65,112 @@ function DrawContent() {
   const selectedIndices = useMemo(() => selectedCards.map((c) => c.cardId), [selectedCards]);
   const isComplete = config ? selectedCards.length >= config.cardCount : false;
 
-  const configRef = useRef(config);
-  configRef.current = config;
-
   const handleSelect = useCallback(
     (cardIndex: number) => {
+      if (!config) return;
       setSelectedCards((prev) => {
-        const c = configRef.current;
-        if (!c || prev.length >= c.cardCount) return prev;
+        if (prev.length >= config.cardCount) return prev;
         const orientation = determineOrientation();
         return [...prev, { cardId: cardIndex, orientation }];
       });
+      // 결과 화면 플립 전에 앞면 이미지를 브라우저 캐시에 올려둔다
+      new window.Image().src = `/cards/major/${cardIndex}.webp`;
     },
-    []
+    [config]
   );
 
   const handleRemove = useCallback((slotIndex: number) => {
     setSelectedCards((prev) => prev.filter((_, i) => i !== slotIndex));
   }, []);
 
-  if (!isValid || !config || !categoryLabel) return null;
+  if (!isValid || !config || !categoryLabel) return <DrawSkeleton />;
 
   function handleReveal() {
     if (!isComplete || !config) return;
     router.push(buildResultUrl(spreadParam as "one" | "three", categoryParam as "love" | "wealth" | "career", selectedCards));
   }
 
+  const ctaLabel = isComplete
+    ? "카드 확인하기"
+    : `${config.cardCount - selectedCards.length}장 더 선택하세요`;
+
   return (
     <>
-      <FlexBox flexDirection="column" gap="24px" sx={{ paddingBottom: "80px" }}>
-        {/* Slots */}
-        <FlexBox
-          justifyContent="center"
-          gap="20px"
-          sx={(theme) => ({
-            padding: "24px",
-            borderRadius: "16px",
-            backgroundColor: theme.semantic.background.normal.normal,
-          })}
-        >
-          {config.positions.map((label, i) => (
-            <CardSlot
-              key={i}
-              index={i}
-              label={label}
-              filled={i < selectedCards.length}
-              onClick={() => handleRemove(i)}
+      <LayoutGroup id="draw">
+        <FlexBox flexDirection="column" gap="24px" sx={{ paddingBottom: "80px" }}>
+          {/* Slots */}
+          <motion.div {...fadeRise(0.05)}>
+            <FlexBox
+              justifyContent="center"
+              gap="20px"
+              sx={(theme) => ({
+                padding: "24px",
+                borderRadius: "16px",
+                backgroundColor: theme.semantic.background.normal.normal,
+              })}
+            >
+              {config.positions.map((label, i) => (
+                <CardSlot
+                  key={i}
+                  index={i}
+                  label={label}
+                  cardId={selectedCards[i]?.cardId ?? null}
+                  onRemove={() => handleRemove(i)}
+                />
+              ))}
+            </FlexBox>
+          </motion.div>
+
+          {/* Guide text */}
+          <motion.div {...fadeRise(0.12)}>
+            <Typography
+              variant="caption1"
+              weight="medium"
+              color="semantic.label.alternative"
+              sx={{ textAlign: "center", display: "block" }}
+            >
+              {isComplete
+                ? "모든 카드를 선택했습니다. 결과를 확인하세요."
+                : `아래 카드를 신중히 선택해 ${categoryLabel.label} 운세를 점쳐보세요.`}
+            </Typography>
+          </motion.div>
+
+          {/* Grid */}
+          <motion.div {...fadeRise(0.18)}>
+            <CardGrid
+              totalCards={22}
+              selectedIndices={selectedIndices}
+              onSelect={handleSelect}
+              maxSelections={config.cardCount}
+              shuffledOrder={shuffledOrder}
             />
-          ))}
+          </motion.div>
+
+          {/* Inline CTA */}
+          <div ref={sentinelRef}>
+            <motion.div {...fadeRise(0.3)}>
+              <Button
+                variant="solid"
+                color="primary"
+                size="large"
+                fullWidth
+                onClick={handleReveal}
+                disabled={!isComplete}
+              >
+                {ctaLabel}
+              </Button>
+            </motion.div>
+          </div>
         </FlexBox>
-
-        {/* Guide text */}
-        <Typography
-          variant="caption1"
-          weight="medium"
-          color="semantic.label.alternative"
-          sx={{ textAlign: "center" }}
-        >
-          {isComplete
-            ? "모든 카드를 선택했습니다. 결과를 확인하세요."
-            : `아래 카드를 신중히 선택해 ${categoryLabel.label} 운세를 점쳐보세요.`}
-        </Typography>
-
-        {/* Grid */}
-        <CardGrid
-          totalCards={22}
-          selectedIndices={selectedIndices}
-          onSelect={handleSelect}
-          maxSelections={config.cardCount}
-          shuffledOrder={shuffledOrder}
-        />
-
-        {/* Inline CTA */}
-        <div ref={inlineCtaRef}>
-          <Button
-            variant="solid"
-            color="primary"
-            size="large"
-            fullWidth
-            onClick={handleReveal}
-            disabled={!isComplete}
-          >
-            {isComplete
-              ? "카드 확인하기"
-              : `${config.cardCount - selectedCards.length}장 더 선택하세요`}
-          </Button>
-        </div>
-      </FlexBox>
+      </LayoutGroup>
 
       {/* Fixed bottom CTA - only visible when inline CTA is scrolled out of view */}
-      <ActionArea
-        variant="cancel"
-        background
-        sx={{
-          position: "fixed",
-          bottom: 0,
-          left: 0,
-          right: 0,
-          zIndex: 100,
-          opacity: showFixedCta ? 1 : 0,
-          pointerEvents: showFixedCta ? "auto" : "none",
-          transform: showFixedCta ? "translateY(0)" : "translateY(100%)",
-          transition: "opacity 0.25s ease, transform 0.25s ease",
-          "& [data-role='action-area-wrapper']": {
-            width: "100%",
-            maxWidth: "560px",
-            margin: "0 auto",
-            padding: "10px 0 0",
-          },
-        }}
-      >
-        <ActionAreaButton
-          variant="main"
-          buttonVariant="solid"
-          buttonColor="primary"
-          onClick={handleReveal}
-          disabled={!isComplete}
-        >
-          {isComplete
-            ? "카드 확인하기"
-            : `${config.cardCount - selectedCards.length}장 더 선택하세요`}
-        </ActionAreaButton>
-      </ActionArea>
+      <StickyCtaBar
+        visible={showFixed}
+        label={ctaLabel}
+        onClick={handleReveal}
+        disabled={!isComplete}
+      />
     </>
   );
 }
@@ -194,13 +178,11 @@ function DrawContent() {
 function DrawSkeleton() {
   return (
     <FlexBox flexDirection="column" gap="24px">
-      <Skeleton variant="rectangle" width="100%" height="46px" radius="12px" />
-      <FlexBox gap="8px">
-        <Skeleton variant="rectangle" width="64px" height="28px" radius="14px" />
-        <Skeleton variant="rectangle" width="52px" height="28px" radius="14px" />
+      <Skeleton variant="rectangle" width="100%" height="170px" radius="16px" />
+      <FlexBox justifyContent="center">
+        <Skeleton variant="rectangle" width="60%" height="16px" radius="8px" />
       </FlexBox>
-      <Skeleton variant="rectangle" width="100%" height="140px" radius="16px" />
-      <Skeleton variant="rectangle" width="100%" height="320px" radius="16px" />
+      <Skeleton variant="rectangle" width="100%" height="300px" radius="16px" />
       <Skeleton variant="rectangle" width="100%" height="48px" radius="12px" />
     </FlexBox>
   );

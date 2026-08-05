@@ -17,7 +17,8 @@ export function CustomToast({ message, visible }: CustomToastProps) {
         left: "50%",
         transform: `translateX(-50%) translateY(${visible ? "0" : "20px"})`,
         opacity: visible ? 1 : 0,
-        transition: "all 0.3s ease",
+        transition:
+          "opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
         backgroundColor: `rgba(27, 28, 30, ${theme.opacity[52]})`,
         padding: "12px 24px",
         borderRadius: "12px",

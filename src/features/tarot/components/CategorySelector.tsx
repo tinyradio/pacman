@@ -1,11 +1,13 @@
 "use client";
 
+import { motion } from "motion/react";
 import { FlexBox, Typography } from "@wanteddev/wds";
 import {
   IconHeart,
   IconCoins,
   IconBusinessBag,
 } from "@wanteddev/wds-icon";
+import { CSS_EASE_MICRO, DUR, EASE_MICRO } from "@/features/tarot/lib/motion";
 import type { Category } from "@/features/tarot/lib/types";
 import { CATEGORY_LABELS } from "@/features/tarot/lib/types";
 
@@ -55,30 +57,37 @@ export function CategorySelector({
                 ? theme.semantic.background.normal.normal
                 : `rgba(255, 255, 255, ${theme.opacity[61]})`,
               cursor: "pointer",
-              transition: "all 0.2s ease",
+              transition: `background-color 0.2s ease, transform ${DUR.micro}s ${CSS_EASE_MICRO}`,
+              "&:active": { transform: "scale(0.97)" },
             })}
           >
-            <FlexBox
-              alignItems="center"
-              justifyContent="center"
-              sx={(theme) => ({
-                width: "44px",
-                height: "44px",
-                borderRadius: "8px",
-                backgroundColor: isSelected
-                  ? theme.atomic.blue[95]
-                  : theme.atomic.coolNeutral[98],
-                color: isSelected
-                  ? theme.semantic.primary.normal
-                  : theme.semantic.label.assistive,
-                "& svg": {
-                  opacity: isSelected ? theme.opacity[74] : 1,
-                },
-                transition: "all 0.2s ease",
-              })}
+            <motion.div
+              animate={isSelected ? { scale: [1, 1.08, 1] } : { scale: 1 }}
+              transition={{ duration: 0.35, ease: EASE_MICRO, times: [0, 0.4, 1] }}
             >
-              {CATEGORY_ICONS[key]}
-            </FlexBox>
+              <FlexBox
+                alignItems="center"
+                justifyContent="center"
+                sx={(theme) => ({
+                  width: "44px",
+                  height: "44px",
+                  borderRadius: "8px",
+                  backgroundColor: isSelected
+                    ? theme.atomic.blue[95]
+                    : theme.atomic.coolNeutral[98],
+                  color: isSelected
+                    ? theme.semantic.primary.normal
+                    : theme.semantic.label.assistive,
+                  "& svg": {
+                    opacity: isSelected ? theme.opacity[74] : 1,
+                    transition: "opacity 0.2s ease",
+                  },
+                  transition: "background-color 0.2s ease, color 0.2s ease",
+                })}
+              >
+                {CATEGORY_ICONS[key]}
+              </FlexBox>
+            </motion.div>
             <FlexBox flexDirection="column" gap="6px" alignItems="center">
               <Typography
                 variant="label1"

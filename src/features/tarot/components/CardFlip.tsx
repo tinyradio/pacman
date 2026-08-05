@@ -2,6 +2,8 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
+import { useReducedMotion } from "motion/react";
+import { CSS_EASE_ENTRY, DUR } from "@/features/tarot/lib/motion";
 import {
   FlexBox,
   Typography,
@@ -37,23 +39,20 @@ export function CardFlip({
   const [flipped, setFlipped] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const { width, height } = SIZES[size];
+  const prefersReducedMotion = useReducedMotion();
 
   const openModal = useCallback(() => {
     if (flipped) setShowModal(true);
   }, [flipped]);
 
   useEffect(() => {
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-
     const timeout = setTimeout(
       () => setFlipped(true),
       prefersReducedMotion ? 0 : delay
     );
 
     return () => clearTimeout(timeout);
-  }, [delay]);
+  }, [delay, prefersReducedMotion]);
 
   return (
     <>
@@ -64,9 +63,9 @@ export function CardFlip({
           width: `${width}px`,
           height: `${height}px`,
           perspective: "800px",
-          borderRadius: flipped ? "12px" : "0px",
+          borderRadius: "12px",
           boxShadow: flipped ? theme.semantic.elevation.shadow.normal.small : "none",
-          transition: "box-shadow 0.5s ease 0.4s, border-radius 0.5s ease 0.4s",
+          transition: "box-shadow 0.5s ease 0.4s",
           cursor: flipped ? "pointer" : "default",
         })}
       >
@@ -75,7 +74,9 @@ export function CardFlip({
             position: "relative",
             width: "100%",
             height: "100%",
-            transition: "transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)",
+            transition: prefersReducedMotion
+              ? "none"
+              : `transform ${DUR.flip}s ${CSS_EASE_ENTRY}`,
             transformStyle: "preserve-3d",
             transform: flipped ? "rotateY(180deg)" : "rotateY(0deg)",
           }}
@@ -129,6 +130,7 @@ export function CardFlip({
                 fill
                 sizes={`${width}px`}
                 style={{ objectFit: "cover" }}
+                priority
               />
             </div>
           </div>

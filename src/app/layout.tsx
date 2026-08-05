@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Providers } from "@/components/Providers";
 
 import "@wanteddev/wds/global.css";
+import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://pacman-six-liart.vercel.app"),
@@ -40,6 +41,13 @@ export default function RootLayout({
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@500&display=swap"
         />
+        {process.env.NODE_ENV !== "production" && (
+          <script
+            async
+            src="http://localhost:7878/spidey-sense.js"
+            data-spidey-sense="true"
+          />
+        )}
       </head>
       <body>
         <Providers>{children}</Providers>

@@ -2,11 +2,17 @@
 
 import { Suspense } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { MotionConfig } from "motion/react";
 import { FlexBox, IconButton } from "@wanteddev/wds";
 import { IconChevronLeft, IconShare } from "@wanteddev/wds-icon";
 import { StepIndicatorCompact } from "@/features/tarot/components/StepIndicator";
 import { CustomToast } from "@/features/tarot/components/CustomToast";
 import { useShareToast } from "@/features/tarot/lib/useShareToast";
+import {
+  buildDrawUrl,
+  isValidCategory,
+  isValidSpread,
+} from "@/features/tarot/lib/utils";
 import { CATEGORY_LABELS } from "@/features/tarot/lib/types";
 import type { Category } from "@/features/tarot/lib/types";
 
@@ -37,8 +43,17 @@ function TarotLayoutInner({ children }: { children: React.ReactNode }) {
     : BASE_STEPS;
 
   function handleBack() {
-    if (window.history.length > 1) {
-      router.back();
+    const spread = searchParams.get("spread") ?? "";
+    const category = searchParams.get("category") ?? "";
+
+    if (pathname.includes("/result")) {
+      if (isValidSpread(spread) && isValidCategory(category)) {
+        router.push(buildDrawUrl(spread, category));
+      } else {
+        router.push("/tarot/select");
+      }
+    } else if (pathname.includes("/draw")) {
+      router.push("/tarot/select");
     } else {
       router.push("/tarot");
     }
@@ -119,8 +134,10 @@ export default function TarotLayout({
   children: React.ReactNode;
 }) {
   return (
-    <Suspense>
-      <TarotLayoutInner>{children}</TarotLayoutInner>
-    </Suspense>
+    <MotionConfig reducedMotion="user">
+      <Suspense>
+        <TarotLayoutInner>{children}</TarotLayoutInner>
+      </Suspense>
+    </MotionConfig>
   );
 }

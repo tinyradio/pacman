@@ -1,19 +1,30 @@
 /* WDS handles all styling via ThemeProvider + global.css */
-/* This file is kept minimal to avoid conflicts */
+/* This file hosts global motion guards and shared keyframes */
 
-@theme inline {
-  --font-sans: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui,
-    Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo",
-    "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji",
-    "Segoe UI Symbol", sans-serif;
+/* 랜딩 히어로 아크 마키: 카드가 아크 경로(offset-path)를 따라 좌→우로 순환 */
+@keyframes hero-arc {
+  from {
+    offset-distance: 0%;
+  }
+  to {
+    offset-distance: 100%;
+  }
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+  }
 
-@keyframes scaleIn {
-  from { opacity: 0; transform: scale(0.85); }
-  to { opacity: 1; transform: scale(1); }
+  /* 아크 마키는 클램프 대신 일시정지 — 음수 delay로 분산된 카드 위치를 유지한다 */
+  .hero-arc-card {
+    animation-duration: var(--arc-duration, 95s) !important;
+    animation-iteration-count: infinite !important;
+    animation-play-state: paused !important;
+  }
 }
