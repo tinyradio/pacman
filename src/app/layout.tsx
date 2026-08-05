@@ -4,8 +4,13 @@ import { Providers } from "@/components/Providers";
 import "@wanteddev/wds/global.css";
 import "./globals.css";
 
+// 프로덕션 도메인은 Vercel이 주입하는 환경변수에서 가져와, 프로젝트 이름 변경에도 자동으로 따라간다
+const productionUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
+  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+  : "http://localhost:3000";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://pacman-six-liart.vercel.app"),
+  metadataBase: new URL(productionUrl),
   title: "타로 카드 운세",
   description: "메이저 아르카나 22장으로 당신의 직장, 재물, 연애 운세를 점쳐보세요.",
   openGraph: {
