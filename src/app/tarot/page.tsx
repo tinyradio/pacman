@@ -22,7 +22,13 @@ export default function TarotLandingPage() {
         gap="16px"
         alignItems="center"
         justifyContent="center"
-        sx={{ minHeight: "calc(100dvh - 88px)" }}
+        sx={{
+          // main의 비대칭 패딩(위 24 / 아래 64)을 상쇄해 전체 뷰포트 기준으로 중앙정렬
+          // → 카드 위 여백과 버튼 아래 여백이 대칭이 된다
+          minHeight: "100dvh",
+          marginTop: "-24px",
+          marginBottom: "-64px",
+        }}
       >
         <HeroCardMarquee />
 
@@ -61,7 +67,6 @@ export default function TarotLandingPage() {
             width: "100%",
             alignSelf: "center",
             marginTop: "16px",
-            paddingBottom: "40px",
           }}
         >
           <FlexBox flexDirection="column" gap="12px" alignItems="center">
