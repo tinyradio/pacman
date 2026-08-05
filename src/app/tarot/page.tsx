@@ -3,8 +3,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { FlexBox, Typography, Button } from "@wanteddev/wds";
-import { CustomToast } from "@/components/tarot/CustomToast";
-import { useShareToast } from "@/lib/tarot/useShareToast";
+import { CustomToast } from "@/features/tarot/components/CustomToast";
+import { useShareToast } from "@/features/tarot/lib/useShareToast";
 
 export default function TarotLandingPage() {
   const { toastMessage, toastVisible, handleShare } = useShareToast();

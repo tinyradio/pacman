@@ -6,8 +6,8 @@ import {
   IconCoins,
   IconBusinessBag,
 } from "@wanteddev/wds-icon";
-import type { Category } from "@/lib/tarot/types";
-import { CATEGORY_LABELS } from "@/lib/tarot/types";
+import type { Category } from "@/features/tarot/lib/types";
+import { CATEGORY_LABELS } from "@/features/tarot/lib/types";
 
 const CATEGORY_ICONS: Record<Category, React.ReactNode> = {
   love: <IconHeart sx={{ fontSize: "20px" }} />,

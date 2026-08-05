@@ -1,4 +1,4 @@
-import type { TarotCard } from "@/lib/tarot/types";
+import type { TarotCard } from "@/features/tarot/lib/types";
 
 export const MAJOR_ARCANA: TarotCard[] = [
   { id: 0, name: "The Fool", nameKo: "바보", numeral: "0", keywords: ["새로운 시작", "모험", "순수", "자유"] },

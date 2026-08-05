@@ -9,10 +9,10 @@ import {
   ActionArea,
   ActionAreaButton,
 } from "@wanteddev/wds";
-import { SpreadSelector } from "@/components/tarot/SpreadSelector";
-import { CategorySelector } from "@/components/tarot/CategorySelector";
-import { buildDrawUrl } from "@/lib/tarot/utils";
-import type { Spread, Category } from "@/lib/tarot/types";
+import { SpreadSelector } from "@/features/tarot/components/SpreadSelector";
+import { CategorySelector } from "@/features/tarot/components/CategorySelector";
+import { buildDrawUrl } from "@/features/tarot/lib/utils";
+import type { Spread, Category } from "@/features/tarot/lib/types";
 
 export default function SelectPage() {
   const router = useRouter();

@@ -12,7 +12,7 @@ import {
   Divider,
   ContentBadge,
 } from "@wanteddev/wds";
-import type { Orientation } from "@/lib/tarot/types";
+import type { Orientation } from "@/features/tarot/lib/types";
 
 interface CardFlipProps {
   cardId: number;

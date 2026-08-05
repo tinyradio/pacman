@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import type { Orientation } from "@/lib/tarot/types";
+import type { Orientation } from "@/features/tarot/lib/types";
 
 interface CardImageProps {
   cardId: number;

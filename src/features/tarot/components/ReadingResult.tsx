@@ -7,10 +7,10 @@ import {
   Divider,
 } from "@wanteddev/wds";
 import { CardFlip } from "./CardFlip";
-import { getCard } from "@/data/tarot/cards";
-import { getInterpretation } from "@/data/tarot/interpretations";
-import type { DrawnCard, Category, Spread, Position } from "@/lib/tarot/types";
-import { SPREAD_CONFIGS, CATEGORY_LABELS } from "@/lib/tarot/types";
+import { getCard } from "@/features/tarot/data/cards";
+import { getInterpretation } from "@/features/tarot/data/interpretations";
+import type { DrawnCard, Category, Spread, Position } from "@/features/tarot/lib/types";
+import { SPREAD_CONFIGS, CATEGORY_LABELS } from "@/features/tarot/lib/types";
 
 interface ReadingResultProps {
   cards: DrawnCard[];

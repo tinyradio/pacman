@@ -4,11 +4,11 @@ import { Suspense } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { FlexBox, IconButton } from "@wanteddev/wds";
 import { IconChevronLeft, IconShare } from "@wanteddev/wds-icon";
-import { StepIndicatorCompact } from "@/components/tarot/StepIndicator";
-import { CustomToast } from "@/components/tarot/CustomToast";
-import { useShareToast } from "@/lib/tarot/useShareToast";
-import { CATEGORY_LABELS } from "@/lib/tarot/types";
-import type { Category } from "@/lib/tarot/types";
+import { StepIndicatorCompact } from "@/features/tarot/components/StepIndicator";
+import { CustomToast } from "@/features/tarot/components/CustomToast";
+import { useShareToast } from "@/features/tarot/lib/useShareToast";
+import { CATEGORY_LABELS } from "@/features/tarot/lib/types";
+import type { Category } from "@/features/tarot/lib/types";
 
 const BASE_STEPS = ["리딩 선택", "카드 선택", "결과 보기"];
 

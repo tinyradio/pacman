@@ -10,17 +10,17 @@ import {
   ActionArea,
   ActionAreaButton,
 } from "@wanteddev/wds";
-import { CardGrid } from "@/components/tarot/CardGrid";
-import { CardSlot } from "@/components/tarot/CardSlot";
+import { CardGrid } from "@/features/tarot/components/CardGrid";
+import { CardSlot } from "@/features/tarot/components/CardSlot";
 import {
   isValidSpread,
   isValidCategory,
   buildResultUrl,
   determineOrientation,
   shuffleArray,
-} from "@/lib/tarot/utils";
-import { SPREAD_CONFIGS, CATEGORY_LABELS } from "@/lib/tarot/types";
-import type { DrawnCard } from "@/lib/tarot/types";
+} from "@/features/tarot/lib/utils";
+import { SPREAD_CONFIGS, CATEGORY_LABELS } from "@/features/tarot/lib/types";
+import type { DrawnCard } from "@/features/tarot/lib/types";
 
 const DEFAULT_ORDER = Array.from({ length: 22 }, (_, i) => i);
 

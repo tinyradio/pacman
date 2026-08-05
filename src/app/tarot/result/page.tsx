@@ -9,13 +9,13 @@ import {
   Skeleton,
 } from "@wanteddev/wds";
 import { IconRefresh, IconHome } from "@wanteddev/wds-icon";
-import { ReadingResult } from "@/components/tarot/ReadingResult";
+import { ReadingResult } from "@/features/tarot/components/ReadingResult";
 import {
   isValidSpread,
   isValidCategory,
   decodeDrawnCards,
-} from "@/lib/tarot/utils";
-import { SPREAD_CONFIGS } from "@/lib/tarot/types";
+} from "@/features/tarot/lib/utils";
+import { SPREAD_CONFIGS } from "@/features/tarot/lib/types";
 
 function ResultContent() {
   const router = useRouter();

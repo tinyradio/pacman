@@ -1,4 +1,4 @@
-import type { CardInterpretation } from "@/lib/tarot/types";
+import type { CardInterpretation } from "@/features/tarot/lib/types";
 import { CARDS_0_3 } from "./parts/cards0-3";
 import { CARDS_4_7 } from "./parts/cards4-7";
 import { CARDS_8_11 } from "./parts/cards8-11";

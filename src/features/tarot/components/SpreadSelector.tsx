@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import { FlexBox, Typography } from "@wanteddev/wds";
-import type { Spread } from "@/lib/tarot/types";
-import { SPREAD_CONFIGS } from "@/lib/tarot/types";
+import type { Spread } from "@/features/tarot/lib/types";
+import { SPREAD_CONFIGS } from "@/features/tarot/lib/types";
 
 const SPREAD_IMAGES: Record<Spread, { on: string; off: string; width: number; height: number }> = {
   one: { on: "/images/spread-one-on.png", off: "/images/spread-one-off.png", width: 53, height: 76 },
